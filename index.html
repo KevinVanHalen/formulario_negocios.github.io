@@ -246,8 +246,41 @@
         }
 
         .custom-card {
-            width: 85%;
+            width: 100%;
             margin: auto;
+        }
+
+        @media (min-width: 320px) {
+            .custom-card {
+                width: 100%;
+                margin: auto;
+            }
+
+            form {
+                width: 95%;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .custom-card {
+                width: 100%;
+                margin: auto;
+            }
+
+            form {
+                width: 80%;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .custom-card {
+                width: 85%;
+                margin: auto;
+            }
+
+            form {
+                width: 60%;
+            }
         }
 
         .custom-check {
@@ -257,6 +290,8 @@
         .required__field {
             color: #c31b1b;
         }
+
+        
     </style>
 
     <div class="container-splash" style="margin-top: 0;">
