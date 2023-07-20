@@ -3,451 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <title>Document</title> -->
-    <title>Formulario Desarrollo de Negocios T1 Páginas</title>
+    <title>Desarrollo de Negocios</title>
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cfcruzazul.com/wp-content/themes/cruz-azul/css/master.css?v=14">
     <link rel="stylesheet" href="https://cfcruzazul.com/wp-content/themes/cruz-azul/style.css?v=8">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <link rel="stylesheet" href="https://www.claroshop.com/medios-plazavip/swift/v1/estilos_css_generales/estilos_formulario.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"> 
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
-    <script src="https://www.claroshop.com/medios-plazavip/swift/v1/claroshop/landings/formulario_compra_al_mayoreo_covid19/popup.js"></script>
     <link rel="stylesheet" href="https://www.claroshop.com/medios-plazavip/swift/v1/claroshop/landings/estilosCss/estiloContenedorSeoMinV2.css">
-    <style>
-        form {
-          margin: 0 auto;
-          width: 60%;
-        }
-      </style>
+    
+    <!-- Main style sheet -->
+    <link rel="stylesheet" href="css/formulario.css">
+    
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script> -->
+    <script src="https://www.claroshop.com/medios-plazavip/swift/v1/claroshop/landings/formulario_compra_al_mayoreo_covid19/popup.js"></script>
+
 </head>
 <body>
-    <style type="text/css">
-        * {font-family: "Muli", "Roboto", arial, helvetica, sans-serif;}
-        body{
-            background-color: #E8E8E8;
-        }
-        .container-splash{
-            position: absolute;
-            /* top:1%; */
-            width: 100%;
-        }
-
-        .container-splash-2{
-            position: absolute;
-            top:130%;
-            transform: translateY(-90%);
-            width: 100%;
-        }
-        .logo-splash{
-            display: block;
-            margin: 0 auto;
-            width: 200px;
-        }
-        .btn.rojo { margin: 0 !important; min-width: auto !important;}
-        img{ width: 100%; }
-        .logo-buen-fin {
-            width: 50%;
-            margin: auto;
-            max-width: 300px;
-        }
-        .contenedor-formulario {
-            padding: 2rem 0rem;
-            background-color: rgba(0, 0, 0, .6);
-            margin: 6% auto;
-            color: white;
-            border-radius: 20px;
-        }
-        .banner-mobile {display: none !important;}
-        
-        .button {
-            display: flex;
-            width: 50%;
-            flex-direction: row;
-            justify-content: center;
-            background-color: #76ff4f;
-            color: #000;
-            padding: 11px 0;
-            font-weight: bold;
-            cursor: pointer;
-            margin: 2% 0;
-            border: 1px solid #76ff4f;
-            min-width: 150px;
-        }  
-
-        .campo-texto{
-            text-align: center;
-            font-weight: 600;
-            line-height: 1.6;
-        }
-
-        input[type="text"], input[type="email"], input[type="number"], input[type="password"], select, textarea {
-            -webkit-box-sizing: border-box;
-            box-sizing: border-box;
-            width: 100%;
-            border: 1px solid #DDD;
-            font-size: 0.9rem;
-            color: #555;
-            padding: 8px !important;
-            font-weight: 300;
-
-            outline: none;
-        }
-
-        /* a, input[type="button"], input[type="submit"], input[type="text"], input[type="password"], input[type="number"], input[type="email"], textarea, button {cursor: pointer !important;}
-        .swal2-title {justify-content: center;} */
-
-        @media (max-width: 1024px){
-            .logo-buen-fin {
-                width: 25%;
-            }
-            .button {
-                min-width: 100px;
-                font-size: 0.9rem;
-            }
-        }
-
-
-
-
-
-
-
-
-
-
-
-        @media (max-width: 780px),print{
-            .contenedor-contador {
-                width: 100%;
-                margin: auto;
-            }
-            .banner-desktop {
-                display: none !important;
-            }
-            .banner-mobile {
-                display: block !important;
-            }
-            .button {
-                width: 40%;
-                font-size: 1rem;
-                padding: 11px 0;
-                min-width: 150px;
-                font-size: 0.8rem;
-                padding: 13px 0;
-                min-width: 130px;
-            }
-        }
-        @media (max-width: 400px) {
-            .button {
-                font-size: 0.7rem;
-                padding: 13.2px 0;
-                min-width: 100px;
-            }
-        }
-
-        @media (max-width: 330px){
-            .button {
-                font-size: 0.65rem;
-                padding: 14px 0;
-                min-width: 85px;
-            }
-        }
-        @media (max-width: 290px){
-            .button {
-                width: 30%;
-                font-size: 0.5rem;
-                padding: 15px 0;
-                min-width: 65px;
-            }
-        }
-
-
-
-
-
-
-        label {
-            font-size: 18px;
-            color: #ffffff;
-        }
-
-        .formulario__grupo-incorrecto .formulario__label {
-            /* color: #bb2929; */
-            color: #ffffff;
-        }
-
-        .formulario__grupo-incorrecto .formulario__input {
-            /* border: .1rem solid #bb2929; */
-            border: .1rem solid #ffffff;
-        }
-
-        .formulario__input_2 {
-            /* border: .1rem solid #bb2929; */
-            border: .1rem solid #ffffff;
-        }
-
-        .formulario__input-error {
-            font-size: 16px;
-            margin-bottom: 0;
-            margin-top: 4px;
-            /* color: #bb2929; */
-            color: #ffffff;
-            display: none;
-            font-weight: bold;
-        }
-
-        .formulario__input-error_2 {
-            font-size: 16px;
-            margin-bottom: 0;
-            margin-top: 4px;
-            /* color: #bb2929; */
-            color: #ffffff;
-            display: block;
-            font-weight: bold;
-        }
-        
-        .formulario__input-error-activo {
-            display: block;
-        }
-
-        .required_field {
-            color: #ffffff;
-        }
-
-        .formulario__label_aux {
-            color: #bb2929;
-        }
-
-        .custom-button {
-            background-color: #F28484;
-            padding-left: 60px;
-            padding-right: 60px;
-            color: #ffffff;
-            outline: none;
-            font-size: 18px;
-
-            border-radius: 5px;
-        }
-        
-        .loader {
-            pointer-events: none;
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            border: 3px solid transparent;
-            border-top-color: #fff;
-            animation: an1 1s ease infinite;
-        }
-
-        @keyframes an1 {
-            0% {
-                transform: rotate(0turn);
-            }
-            100% {
-                transform: rotate(1turn);
-            }
-        }
-
-        .custom-header {
-            padding-top: 15px;
-            padding-bottom: 10px;
-            background-color: #FFEBEB;
-        }
-
-        /* .first-custom-card {
-            border-top: 7px solid rgba(219,59,43,1);
-        } */
-
-        .custom-card {
-            width: 100%;
-            margin: auto;
-        }
-
-        @media (min-width: 320px) {
-            .custom-card {
-                width: 100%;
-                margin: auto;
-            }
-
-            .container-t1 {
-                height: auto;
-                padding: 10% 0;
-
-                border-radius:0;
-
-                display: flex;
-                align-items: center;
-                justify-content: space-around;
-            }
-
-            .container-t1-form {
-                height: auto;
-                padding: 5% 5px;
-                background-color: rgba(219,59,43,1);
-
-                border-radius: 0;
-
-                /* display: flex; */
-                /* align-items: center; */
-            }
-
-            form {
-                width: 95%;
-            }
-        }
-
-        .formulario-contacto {
-            margin-top: 0;
-        }
-
-        @media (min-width: 768px) {
-            .formulario-contacto {
-                margin-top: 3.5rem;
-            }
-
-            .custom-container {
-                margin-top: 3rem
-            }
-
-            .custom-card {
-                width: 100%;
-                margin: auto;
-            }
-
-            .container-t1 {
-                height: auto;
-                padding: 10% 0;
-
-                border-radius: 10px 0 0 10px;
-
-                display: flex;
-                align-items: center;
-                justify-content: space-around;
-            }
-
-            .container-t1-form {
-                height: auto;
-                padding: 5% 5px;
-                background-color: rgba(219,59,43,1);
-
-                border-radius: 0 10px 10px 0;
-                /* padding-top: 2rem; */
-
-                /* display: flex; */
-                /* align-items: center; */
-            }
-
-            form {
-                width: 80%;
-            }
-
-            .container-t1-form form {
-                padding-top: 2rem;
-            }
-
-            .div-actions {
-                display: flex;
-                justify-content: space-around;
-                margin-top: 20px;
-            }
-        }
-
-        @media (min-width: 1024px) {
-            .custom-card {
-                width: 85%;
-                margin: auto;
-            }
-
-            form {
-                width: 90%;
-            }
-        }
-
-        .custom-check {
-            cursor: pointer;
-        }
-
-        .required__field {
-            /* color: #c31b1b; */
-            color: #ffffff;
-        }
-
-        .custom-container {
-            /* margin: 8% auto; */
-            height: 400px;
-            position: relative;
-        }
-
-        .custom-container-card {
-            height: 100%;
-        }
-
-        .container-t1 {
-            height: auto;
-            padding: 10% 0;
-
-            /* border-radius: 10px 0 0 10px; */
-
-            display: flex;
-            align-items: center;
-            justify-content: space-around;
-        }
-
-        .container-t1-form {
-            height: auto;
-            padding: 20px;
-            background-color: rgba(219,59,43,1);
-
-            /* border-radius: 0 10px 10px 0; */
-        }
-
-        .last_message p {
-            text-align: center;
-            color: #ffffff;
-            font-size: 35px;
-            font-weight: bold;
-        }
-
-        .custom_div_count_questions p {
-            text-align: center;
-            color: #ffffff;
-            font-size: 25px;
-            padding-top: 50px;
-            /* margin-top: 10px; */
-        }
-
-        .last-form {
-            height: 100%;
-            display: flex;
-            align-items: center;
-        }
-
-        .div-actions {
-            /* display: flex; */
-            text-align: center;
-            justify-content: space-around;
-            margin-top: 20px;
-        }
-    </style>
-
-    <div class="container-splash" style="margin-top: 0;">
-        <!-- <div class="custom-header">
-            <img src="https://assets.t1paginas.com/IMAGENES/LOGOS/t1paginas-isotipo.png" class="logo-splash" alt="" style="width: 10%; display: block; margin-top: 0;">
-            <h1 class="mt-4 mb-2 font-morganiteLight text-uppercase text-center color-negro h2" style="letter-spacing: 12px; font-weight: bold; margin: 0px 20px 0px 20px; line-height: 1.6;">Formulario Desarrollo de Negocios de T1 Páginas</h1>
-        </div> -->
+    <div class="container-splash">
         <div class="formulario-contacto">
             <div class="custom-container custom-card card">
-                <div class="row justify-content-between custom-container-card" style="padding-right: 0!important;">
-                    <div class="col-md-6 col-12 container-t1" style="background-color: #ffffff;" >
-                        <div class="">
+                <div class="row justify-content-between custom-container-card">
+
+                    <div class="col-md-6 col-12 container-t1">
+                        <div>
                             <img src="https://assets.t1paginas.com/IMAGENES/LOGOS/t1paginas-isotipo.png" class="logo-splash" alt="" style="width: 40%; display: block; margin-top: 0;">
-                            <!-- <h1 class="mt-4 mb-2 font-morganiteLight text-uppercase text-center color-negro h2" style="letter-spacing: 12px; font-weight: bold; margin: 0px 20px 0px 20px; line-height: 1.6;">Formulario Desarrollo de Negocios de T1 Páginas</h1> -->
                             <h1 class="mt-4 mb-2 text-uppercase text-center color-negro h3" style="letter-spacing: 12px; font-weight: bold; margin: 0px 20px 0px 20px; line-height: 1.6;">Desarrollo de Negocios</h1>
                         </div>
                     </div>
+
                     <div class="col-md-6 col-12 container-t1-form">
                         <form id="form_1">
                             <div class="mb-2 formulario__grupo" id="grupo__email">
@@ -1195,15 +782,6 @@
                                 <div class="mb-2 last_message">
                                     <p>¡Gracias!<br>¡Nuestro equipo te contactará en breve!</p>
                                 </div>
-    
-                                <!-- <div class="div-actions">
-                                    <button id="previous_button_16" type="button" class="btn custom-button mr-4 mt-2" onclick="previous_16()">
-                                        <span>Anterior</span>
-                                    </button>
-                                    <button id="next_button_17" type="button" class="btn custom-button ml-4 mt-2" onclick="next_17()">
-                                        <span>Siguiente</span>
-                                    </button>
-                                </div> -->
                             </form>
                         </div>
 
@@ -1219,9 +797,6 @@
 
 <script>
     const scriptURL = 'https://script.google.com/macros/s/AKfycbw0JC2n99K07kN-znWdY-ANK2cxA9Y50506YJ1tUazJRI1RzvZjwDTYcqa8jITCNEeq/exec'
-    // const form = document.forms['formulario-negocios']
-    // const form_1 = document.forms['form_1']
-
     const inputs = document.querySelectorAll('#formulario-contacto input.required')
     const textareas = document.querySelectorAll('#formulario-contacto textarea.required')
     const selects = document.querySelectorAll('#formulario-contacto select.required')
