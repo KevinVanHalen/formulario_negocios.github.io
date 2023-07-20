@@ -22,6 +22,10 @@ body{
     display: block;
     margin: 0 auto;
     width: 200px;
+
+    width: 40%;
+    display: block;
+    margin-top: 0;
 }
 .btn.rojo { margin: 0 !important; min-width: auto !important;}
 img{ width: 100%; }
@@ -86,16 +90,6 @@ input[type="text"], input[type="email"], input[type="number"], input[type="passw
     }
 }
 
-
-
-
-
-
-
-
-
-
-
 @media (max-width: 780px),print{
     .contenedor-contador {
         width: 100%;
@@ -146,23 +140,39 @@ input[type="text"], input[type="email"], input[type="number"], input[type="passw
 
 
 
+/*
+=======================================================================================================
+======================================== Estilos Principales ==========================================
+=======================================================================================================
+*/
+
+.principal-title {
+    letter-spacing: 12px;
+    font-weight: bold;
+    margin: 0px 20px 0px 20px;
+    line-height: 1.6;
+}
+
+.first-next-button {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
 label {
     font-size: 18px;
     color: #ffffff;
 }
 
 .formulario__grupo-incorrecto .formulario__label {
-    /* color: #bb2929; */
     color: #ffffff;
 }
 
 .formulario__grupo-incorrecto .formulario__input {
-    /* border: .1rem solid #bb2929; */
     border: .1rem solid #ffffff;
 }
 
 .formulario__input_2 {
-    /* border: .1rem solid #bb2929; */
     border: .1rem solid #ffffff;
 }
 
@@ -170,7 +180,6 @@ label {
     font-size: 16px;
     margin-bottom: 0;
     margin-top: 4px;
-    /* color: #bb2929; */
     color: #ffffff;
     display: none;
     font-weight: bold;
@@ -180,7 +189,6 @@ label {
     font-size: 16px;
     margin-bottom: 0;
     margin-top: 4px;
-    /* color: #bb2929; */
     color: #ffffff;
     display: block;
     font-weight: bold;
@@ -234,10 +242,6 @@ label {
     background-color: #FFEBEB;
 }
 
-/* .first-custom-card {
-    border-top: 7px solid rgba(219,59,43,1);
-} */
-
 .custom-card {
     width: 100%;
     margin: auto;
@@ -266,9 +270,6 @@ label {
         background-color: rgba(219,59,43,1);
 
         border-radius: 0;
-
-        /* display: flex; */
-        /* align-items: center; */
     }
 
     form {
@@ -312,10 +313,6 @@ label {
         background-color: rgba(219,59,43,1);
 
         border-radius: 0 10px 10px 0;
-        /* padding-top: 2rem; */
-
-        /* display: flex; */
-        /* align-items: center; */
     }
 
     form {
@@ -351,12 +348,10 @@ label {
 }
 
 .required__field {
-    /* color: #c31b1b; */
     color: #ffffff;
 }
 
 .custom-container {
-    /* margin: 8% auto; */
     height: 400px;
     position: relative;
 }
@@ -369,8 +364,6 @@ label {
     height: auto;
     padding: 10% 0;
 
-    /* border-radius: 10px 0 0 10px; */
-
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -382,8 +375,6 @@ label {
     height: auto;
     padding: 20px;
     background-color: rgba(219,59,43,1);
-
-    /* border-radius: 0 10px 10px 0; */
 }
 
 .last_message p {
@@ -398,7 +389,6 @@ label {
     color: #ffffff;
     font-size: 25px;
     padding-top: 50px;
-    /* margin-top: 10px; */
 }
 
 .last-form {
@@ -408,7 +398,6 @@ label {
 }
 
 .div-actions {
-    /* display: flex; */
     text-align: center;
     justify-content: space-around;
     margin-top: 20px;

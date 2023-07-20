@@ -1,4 +1,6 @@
+// URL to send data to google sheet
 const scriptURL = 'https://script.google.com/macros/s/AKfycbw0JC2n99K07kN-znWdY-ANK2cxA9Y50506YJ1tUazJRI1RzvZjwDTYcqa8jITCNEeq/exec'
+
 const inputs = document.querySelectorAll('#formulario-contacto input.required')
 const textareas = document.querySelectorAll('#formulario-contacto textarea.required')
 const selects = document.querySelectorAll('#formulario-contacto select.required')
@@ -67,6 +69,12 @@ const campos_json = {
     atencion_cliente_digitales: [],
     otros_atencion_cliente_digitales: '',
 }
+
+/**
+ * ====================================================================================================
+ * ================== Validaciones =========================
+ * ====================================================================================================
+ */
 
 const validarFormularioInputsTextareas = (e) => {
     switch (e.target.name) {
@@ -306,7 +314,7 @@ function checkIndustria() {
         campos[industria] = true
     }
 
-    if (document.getElementById('industria').value == 'otros') {
+    if (document.getElementById('industria').value == 'Otros') {
         document.getElementById('otros_industrias_texto').removeAttribute('hidden')
 
         document.querySelector(`#grupo__industria .formulario__input-error`).classList.add('formulario__input-error-activo')
@@ -514,7 +522,7 @@ function next_2() {
         document.getElementById(`grupo__industria`).classList.add('formulario__grupo-incorrecto')
         avanzar = false
     } else {
-        if (industria.value == 'otros') {
+        if (industria.value == 'Otros') {
             if (otros_industrias_texto.value == '') {
                 document.querySelector(`#grupo__industria .formulario__input-error`).classList.add('formulario__input-error-activo')
                 document.getElementById(`grupo__industria`).classList.add('formulario__grupo-incorrecto')
@@ -1031,6 +1039,9 @@ function next_16() {
 
         document.getElementById('span_number_questions_form_2').textContent = '29'
 
+        /**
+         * Send data to google sheets
+         */
         const formData = new FormData()
 
         formData.append('email', campos_json.email)
@@ -1077,8 +1088,8 @@ function next_16() {
             body: formData
         })
         .then(response => {
-            console.log('Success!', response)
-            // button_loading.innerHTML = "<span>Enviar</span>"
+            // console.log('Success!', response)
+
             document.getElementById('form_16').setAttribute('hidden', 1)
             document.getElementById('div-last-form').removeAttribute('hidden')
             document.getElementById('form_17').removeAttribute('hidden')

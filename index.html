@@ -30,8 +30,8 @@
 
                     <div class="col-md-6 col-12 container-t1">
                         <div>
-                            <img src="https://assets.t1paginas.com/IMAGENES/LOGOS/t1paginas-isotipo.png" class="logo-splash" alt="" style="width: 40%; display: block; margin-top: 0;">
-                            <h1 class="mt-4 mb-2 text-uppercase text-center color-negro h3" style="letter-spacing: 12px; font-weight: bold; margin: 0px 20px 0px 20px; line-height: 1.6;">Desarrollo de Negocios</h1>
+                            <img src="https://assets.t1paginas.com/IMAGENES/LOGOS/t1paginas-isotipo.png" class="logo-splash" alt="Logo T1 Páginas">
+                            <h1 class="mt-4 mb-2 text-uppercase text-center color-negro h3 principal-title">Desarrollo de Negocios</h1>
                         </div>
                     </div>
 
@@ -50,7 +50,7 @@
                                 <p class="formulario__input-error">Esta pregunta es obligatoria</p>
                             </div>
                             
-                            <div style="display: flex; justify-content: center; margin-top: 20px;">
+                            <div class="first-next-button">
                                 <button id="next_button_1" type="button" class="btn custom-button" onclick="next_1()">
                                     <span>Siguiente</span>
                                 </button>
@@ -61,19 +61,19 @@
                             <div class="mb-2 formulario__grupo" id="grupo__modelo_negocio">
                                 <label class="formulario__label mb-2">¿Tu modelo de negocio de venta va dirigido a empresas o a consumidor final? <span class="required_field">*</span></label>
                                 <div class="form-check">
-                                    <input class="form-check-input custom-check" type="radio" name="modelo_negocio" id="consumidor_final" value="consumidor final" checked required onchange="checkModeloNegocios()">
+                                    <input class="form-check-input custom-check" type="radio" name="modelo_negocio" id="consumidor_final" value="Consumidor Final" checked required onchange="checkModeloNegocios()">
                                     <label class="form-check-label custom-check" for="consumidor_final">
                                         Consumidor Final (Venta de producto al por menor)
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input custom-check" type="radio" name="modelo_negocio" id="empresa" value="empresa" required onchange="checkModeloNegocios()">
+                                    <input class="form-check-input custom-check" type="radio" name="modelo_negocio" id="empresa" value="Empresa" required onchange="checkModeloNegocios()">
                                     <label class="form-check-label custom-check" for="empresa">
                                         Empresa (Venta de servicios o mayoreo)
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input custom-check" type="radio" name="modelo_negocio" id="otros_modelos" value="otros_modelos" required onchange="checkModeloNegocios()">
+                                    <input class="form-check-input custom-check" type="radio" name="modelo_negocio" id="otros_modelos" value="Otros" required onchange="checkModeloNegocios()">
                                     <label class="form-check-label custom-check" for="otros_modelos">
                                         Otros:
                                     </label>
@@ -86,12 +86,12 @@
                                 <label class="formulario__label mb-2" for="industria">¿En qué industria clasificarías a tu empresa? <span class="required_field">*</span></label>
                                 <select class="form-select required formulario__input" aria-label="Default select example" id="industria" name="industria" onchange="checkIndustria()">
                                     <option value="" selected disabled>Selecciona una opción</option>
-                                    <option value="moda">Moda</option>
-                                    <option value="comida">Comida</option>
-                                    <option value="bebidas">Bebidas</option>
-                                    <option value="electronicos">Electrónicos</option>
-                                    <option value="accesorios">Accesorios (Joyería, Relojería, etc)</option>
-                                    <option value="otros">Otros</option>
+                                    <option value="Moda">Moda</option>
+                                    <option value="Comida">Comida</option>
+                                    <option value="Bebidas">Bebidas</option>
+                                    <option value="Electrónicos">Electrónicos</option>
+                                    <option value="Accesorios">Accesorios (Joyería, Relojería, etc)</option>
+                                    <option value="Otros">Otros</option>
                                 </select>
                                 <input class="mt-3 formulario__input" type="text" id="otros_industrias_texto" name="otros_industrias_texto" hidden onkeyup="validarCampoIndustria()">
                                 <p class="formulario__input-error">Esta pregunta es obligatoria</p>
@@ -140,55 +140,55 @@
                             <div class="mb-2 formulario__grupo" id="grupo__redes_sociales">
                                 <label id="label_redes_sociales" class="formulario__label mb-2">¿Cuáles redes sociales utilizas actualmente? <span class="required_field">*</span></label>
                                 <div class="form-check">
-                                    <input class="form-check-input custom-check" type="checkbox" name="redes_sociales[]" id="facebook" value="facebook">
+                                    <input class="form-check-input custom-check" type="checkbox" name="redes_sociales[]" id="facebook" value="Facebook">
                                     <label class="form-check-label custom-check" for="facebook">
                                         Facebook
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input custom-check" type="checkbox" name="redes_sociales[]" id="instagram" value="instagram">
+                                    <input class="form-check-input custom-check" type="checkbox" name="redes_sociales[]" id="instagram" value="Instagram">
                                     <label class="form-check-label custom-check" for="instagram">
                                         Instagram
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input custom-check" type="checkbox" name="redes_sociales[]" id="reddit" value="reddit">
+                                    <input class="form-check-input custom-check" type="checkbox" name="redes_sociales[]" id="reddit" value="Reddit">
                                     <label class="form-check-label custom-check" for="reddit">
                                         Reddit
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input custom-check" type="checkbox" name="redes_sociales[]" id="twitter" value="twitter">
+                                    <input class="form-check-input custom-check" type="checkbox" name="redes_sociales[]" id="twitter" value="Twitter">
                                     <label class="form-check-label custom-check" for="twitter">
                                         Twitter
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input custom-check" type="checkbox" name="redes_sociales[]" id="tiktok" value="tiktok">
+                                    <input class="form-check-input custom-check" type="checkbox" name="redes_sociales[]" id="tiktok" value="Tik Tok">
                                     <label class="form-check-label custom-check" for="tiktok">
                                         Tik Tok
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input custom-check" type="checkbox" name="redes_sociales[]" id="pinterest" value="pinterest">
+                                    <input class="form-check-input custom-check" type="checkbox" name="redes_sociales[]" id="pinterest" value="Pinterest">
                                     <label class="form-check-label custom-check" for="pinterest">
                                         Pinterest
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input custom-check" type="checkbox" name="redes_sociales[]" id="youtube" value="youtube">
+                                    <input class="form-check-input custom-check" type="checkbox" name="redes_sociales[]" id="youtube" value="Youtube">
                                     <label class="form-check-label custom-check" for="youtube">
                                         Youtube
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input custom-check" type="checkbox" name="redes_sociales[]" id="ninguna" value="ninguna">
+                                    <input class="form-check-input custom-check" type="checkbox" name="redes_sociales[]" id="ninguna" value="Ninguna">
                                     <label class="form-check-label custom-check" for="ninguna">
                                         Ninguna
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input custom-check" type="checkbox" name="redes_sociales[]" id="otros_redes_sociales" value="otros_redes_sociales" onchange="checkRedesSociales()">
+                                    <input class="form-check-input custom-check" type="checkbox" name="redes_sociales[]" id="otros_redes_sociales" value="Otros" onchange="checkRedesSociales()">
                                     <label class="form-check-label custom-check" for="otros_redes_sociales">
                                         Otros:
                                     </label>
@@ -212,49 +212,49 @@
                             <div class="mb-2 formulario__grupo" id="grupo__formato_publicidad">
                                 <label id="label_formato_publicidad" class="formulario__label mb-2">¿Qué formato de contenido es el que más utilizas para mostrar tu publicidad? <span class="required_field">*</span></label>
                                 <div class="form-check">
-                                    <input class="form-check-input custom-check" type="checkbox" name="formato_publicidad[]" id="videos_largos" value="videos_largos">
+                                    <input class="form-check-input custom-check" type="checkbox" name="formato_publicidad[]" id="videos_largos" value="Videos formato largo">
                                     <label class="form-check-label custom-check" for="videos_largos">
                                         Videos formato largo
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input custom-check" type="checkbox" name="formato_publicidad[]" id="videos_cortos" value="videos_cortos">
+                                    <input class="form-check-input custom-check" type="checkbox" name="formato_publicidad[]" id="videos_cortos" value="Videos cortos en formato vertical">
                                     <label class="form-check-label custom-check" for="videos_cortos">
                                         Videos cortos en formato Vertical
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input custom-check" type="checkbox" name="formato_publicidad[]" id="publicaciones_redes" value="publicaciones_redes">
+                                    <input class="form-check-input custom-check" type="checkbox" name="formato_publicidad[]" id="publicaciones_redes" value="Publicaciones en feed de redes sociales">
                                     <label class="form-check-label custom-check" for="publicaciones_redes">
                                         Publicaciones en feed de redes sociales
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input custom-check" type="checkbox" name="formato_publicidad[]" id="blogs" value="blogs">
+                                    <input class="form-check-input custom-check" type="checkbox" name="formato_publicidad[]" id="blogs" value="Blogs">
                                     <label class="form-check-label custom-check" for="blogs">
                                         Blogs
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input custom-check" type="checkbox" name="formato_publicidad[]" id="correos_electronicos" value="correos_electronicos">
+                                    <input class="form-check-input custom-check" type="checkbox" name="formato_publicidad[]" id="correos_electronicos" value="Correos electrónicos">
                                     <label class="form-check-label custom-check" for="correos_electronicos">
                                         Correos electrónicos
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input custom-check" type="checkbox" name="formato_publicidad[]" id="difusion_organica" value="difusion_organica">
+                                    <input class="form-check-input custom-check" type="checkbox" name="formato_publicidad[]" id="difusion_organica" value="Difusión orgánica fuera de medios electrónicos">
                                     <label class="form-check-label custom-check" for="difusion_organica">
                                         Difusión orgánica fuera de medios electrónicos
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input custom-check" type="checkbox" name="formato_publicidad[]" id="influencer_marketing" value="influencer_marketing">
+                                    <input class="form-check-input custom-check" type="checkbox" name="formato_publicidad[]" id="influencer_marketing" value="Influencer Mkt">
                                     <label class="form-check-label custom-check" for="influencer_marketing">
                                         Influencer Mkt
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input custom-check" type="checkbox" name="formato_publicidad[]" id="otros_formatos" value="otros_formatos" onchange="checkFormatosPublicidad()">
+                                    <input class="form-check-input custom-check" type="checkbox" name="formato_publicidad[]" id="otros_formatos" value="Otros" onchange="checkFormatosPublicidad()">
                                     <label class="form-check-label custom-check" for="otros_formatos">
                                         Otros:
                                     </label>
@@ -278,67 +278,67 @@
                             <div class="mb-2 formulario__grupo" id="grupo__difusion">
                                 <label id="label_difusion" class="formulario__label mb-2">¿Cuáles redes sociales o medios tradicionales utilizas actualmente para hacer una difusión efectiva del contenido? <span class="required_field">*</span></label>
                                 <div class="form-check">
-                                    <input class="form-check-input custom-check" type="checkbox" name="difusion[]" id="facebook_difusion" value="facebook">
+                                    <input class="form-check-input custom-check" type="checkbox" name="difusion[]" id="facebook_difusion" value="Facebook">
                                     <label class="form-check-label custom-check" for="facebook_difusion">
                                         Facebook
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input custom-check" type="checkbox" name="difusion[]" id="instagram_difusion" value="instagram">
+                                    <input class="form-check-input custom-check" type="checkbox" name="difusion[]" id="instagram_difusion" value="Instagram">
                                     <label class="form-check-label custom-check" for="instagram_difusion">
                                         Instagram
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input custom-check" type="checkbox" name="difusion[]" id="reddit_difusion" value="reddit">
+                                    <input class="form-check-input custom-check" type="checkbox" name="difusion[]" id="reddit_difusion" value="Reddit">
                                     <label class="form-check-label custom-check" for="reddit_difusion">
                                         Reddit
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input custom-check" type="checkbox" name="difusion[]" id="twitter_difusion" value="twitter">
+                                    <input class="form-check-input custom-check" type="checkbox" name="difusion[]" id="twitter_difusion" value="Twitter">
                                     <label class="form-check-label custom-check" for="twitter_difusion">
                                         Twitter
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input custom-check" type="checkbox" name="difusion[]" id="tiktok_difusion" value="tiktok">
+                                    <input class="form-check-input custom-check" type="checkbox" name="difusion[]" id="tiktok_difusion" value="Tik Tok">
                                     <label class="form-check-label custom-check" for="tiktok_difusion">
                                         Tik Tok
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input custom-check" type="checkbox" name="difusion[]" id="pinterest_difusion" value="pinterest">
+                                    <input class="form-check-input custom-check" type="checkbox" name="difusion[]" id="pinterest_difusion" value="Pinterest">
                                     <label class="form-check-label custom-check" for="pinterest_difusion">
                                         Pinterest
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input custom-check" type="checkbox" name="difusion[]" id="youtube_difusion" value="youtube">
+                                    <input class="form-check-input custom-check" type="checkbox" name="difusion[]" id="youtube_difusion" value="Youtube">
                                     <label class="form-check-label custom-check" for="youtube_difusion">
                                         Youtube
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input custom-check" type="checkbox" name="difusion[]" id="puntos_venta" value="puntos_venta">
+                                    <input class="form-check-input custom-check" type="checkbox" name="difusion[]" id="puntos_venta" value="Puntos de venta físicos">
                                     <label class="form-check-label custom-check" for="puntos_venta">
                                         Puntos de venta físicos
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input custom-check" type="checkbox" name="difusion[]" id="material_tradicional" value="material_tradicional">
+                                    <input class="form-check-input custom-check" type="checkbox" name="difusion[]" id="material_tradicional" value="Material de difusión tradicional">
                                     <label class="form-check-label custom-check" for="material_tradicional">
                                         Material de difusión tradicional (Revistas, Periódico, Radio, Televisión, etc)
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input custom-check" type="checkbox" name="difusion[]" id="correo_electronico_difusion" value="correo_electronico">
+                                    <input class="form-check-input custom-check" type="checkbox" name="difusion[]" id="correo_electronico_difusion" value="Correo Electrónico">
                                     <label class="form-check-label custom-check" for="correo_electronico_difusion">
                                         Correo Electrónico
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input custom-check" type="checkbox" name="difusion[]" id="otros_difusion" value="otros" onchange="checkDifusion()">
+                                    <input class="form-check-input custom-check" type="checkbox" name="difusion[]" id="otros_difusion" value="Otros" onchange="checkDifusion()">
                                     <label class="form-check-label custom-check" for="otros_difusion">
                                         Otros:
                                     </label>
@@ -362,13 +362,13 @@
                             <div class="mb-2 formulario__grupo" id="grupo__publicidad_pautada">
                                 <label class="formulario__label mb-2">¿Utilizas publicidad pautada en medios electrónicos? <span class="required_field">*</span></label>
                                 <div class="form-check">
-                                    <input class="form-check-input custom-check" type="radio" name="publicidad_pautada" id="publicidad_pautada_si" value="si" required>
+                                    <input class="form-check-input custom-check" type="radio" name="publicidad_pautada" id="publicidad_pautada_si" value="Sí" required>
                                     <label class="form-check-label custom-check" for="publicidad_pautada_si">
                                         Sí
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input custom-check" type="radio" name="publicidad_pautada" id="publicidad_pautada_no" value="no" checked required>
+                                    <input class="form-check-input custom-check" type="radio" name="publicidad_pautada" id="publicidad_pautada_no" value="No" checked required>
                                     <label class="form-check-label custom-check" for="publicidad_pautada_no">
                                         No
                                     </label>
@@ -379,25 +379,25 @@
                             <div class="mb-2">
                                 <label class="mb-2">En caso de haber indicado "sí" en la pregunta anterior, favor de indicar cuáles medios digitales utilizas para fines publicitarios:</label>
                                 <div class="form-check">
-                                    <input class="form-check-input custom-check" type="checkbox" name="publicidad_digitales[]" id="publicidad_meta" value="meta">
+                                    <input class="form-check-input custom-check" type="checkbox" name="publicidad_digitales[]" id="publicidad_meta" value="Meta (Facebook/Instagram)">
                                     <label class="form-check-label custom-check" for="publicidad_meta">
                                         Meta (Facebook/Instagram)
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input custom-check" type="checkbox" name="publicidad_digitales[]" id="publicidad_google" value="google">
+                                    <input class="form-check-input custom-check" type="checkbox" name="publicidad_digitales[]" id="publicidad_google" value="Google">
                                     <label class="form-check-label custom-check" for="publicidad_google">
                                         Google
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input custom-check" type="checkbox" name="publicidad_digitales[]" id="publicidad_pinterest" value="pinterest">
+                                    <input class="form-check-input custom-check" type="checkbox" name="publicidad_digitales[]" id="publicidad_pinterest" value="Pinterest">
                                     <label class="form-check-label custom-check" for="publicidad_pinterest">
                                         Pinterest
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input custom-check" type="checkbox" name="publicidad_digitales[]" id="publicidad_tiktok" value="tiktok">
+                                    <input class="form-check-input custom-check" type="checkbox" name="publicidad_digitales[]" id="publicidad_tiktok" value="Tik Tok">
                                     <label class="form-check-label custom-check" for="publicidad_tiktok">
                                         Tik Tok
                                     </label>
@@ -423,13 +423,13 @@
                             <div class="mb-2 formulario__grupo" id="grupo__publicidad_no_digital">
                                 <label class="formulario__label mb-2">¿Utilizas publicidad pautada en medios no digitales tradicionales? <span class="required_field">*</span></label>
                                 <div class="form-check">
-                                    <input class="form-check-input custom-check" type="radio" name="publicidad_no_digital" id="publicidad_no_digital_si" value="si" required>
+                                    <input class="form-check-input custom-check" type="radio" name="publicidad_no_digital" id="publicidad_no_digital_si" value="Sí" required>
                                     <label class="form-check-label custom-check" for="publicidad_no_digital_si">
                                         Sí
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input custom-check" type="radio" name="publicidad_no_digital" id="publicidad_no_digital_no" value="no" checked required>
+                                    <input class="form-check-input custom-check" type="radio" name="publicidad_no_digital" id="publicidad_no_digital_no" value="No" checked required>
                                     <label class="form-check-label custom-check" for="publicidad_no_digital_no">
                                         No
                                     </label>
@@ -440,19 +440,19 @@
                             <div class="mb-2 formulario__grupo" id="grupo__publicidad_tradicionales">
                                 <label class="mb-2">En caso de haber indicado "sí" en la pregunta anterior, favor de indicar cuáles medios tradicionales utilizas:</label>
                                 <div class="form-check">
-                                    <input class="form-check-input custom-check" type="checkbox" name="publicidad_tradicionales[]" id="publicidad_radio" value="radio">
+                                    <input class="form-check-input custom-check" type="checkbox" name="publicidad_tradicionales[]" id="publicidad_radio" value="Radio">
                                     <label class="form-check-label custom-check" for="publicidad_radio">
                                         Radio
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input custom-check" type="checkbox" name="publicidad_tradicionales[]" id="publicidad_televisión" value="televisión">
+                                    <input class="form-check-input custom-check" type="checkbox" name="publicidad_tradicionales[]" id="publicidad_televisión" value="Televisión">
                                     <label class="form-check-label custom-check" for="publicidad_televisión">
                                         Televisión
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input custom-check" type="checkbox" name="publicidad_tradicionales[]" id="publicidad_otros_tradicionales" value="otros" onchange="checkPublicidadTradicionales()">
+                                    <input class="form-check-input custom-check" type="checkbox" name="publicidad_tradicionales[]" id="publicidad_otros_tradicionales" value="Otros" onchange="checkPublicidadTradicionales()">
                                     <label class="form-check-label custom-check" for="publicidad_otros_tradicionales">
                                         Otros:
                                     </label>
@@ -475,13 +475,13 @@
                             <div class="mb-2">
                                 <label class="mb-2">¿Cuentan con un equipo de desarrollo de contenido audiovisual para redes?</label>
                                 <div class="form-check">
-                                    <input class="form-check-input custom-check" type="radio" name="equipo_desarrollo" id="equipo_desarrollo_si" value="si">
+                                    <input class="form-check-input custom-check" type="radio" name="equipo_desarrollo" id="equipo_desarrollo_si" value="Sí">
                                     <label class="form-check-label custom-check" for="equipo_desarrollo_si">
                                         Sí
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input custom-check" type="radio" name="equipo_desarrollo" id="equipo_desarrollo_no" value="no">
+                                    <input class="form-check-input custom-check" type="radio" name="equipo_desarrollo" id="equipo_desarrollo_no" value="No">
                                     <label class="form-check-label custom-check" for="equipo_desarrollo_no">
                                         No
                                     </label>
@@ -491,13 +491,13 @@
                             <div class="mb-2">
                                 <label class="mb-2">¿Cuentan con un equipo de administración de pauta en línea?</label>
                                 <div class="form-check">
-                                    <input class="form-check-input custom-check" type="radio" name="equipo_administracion" id="equipo_administracion_si" value="si">
+                                    <input class="form-check-input custom-check" type="radio" name="equipo_administracion" id="equipo_administracion_si" value="Sí">
                                     <label class="form-check-label custom-check" for="equipo_administracion_si">
                                         Sí
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input custom-check" type="radio" name="equipo_administracion" id="equipo_administracion_no" value="no">
+                                    <input class="form-check-input custom-check" type="radio" name="equipo_administracion" id="equipo_administracion_no" value="No">
                                     <label class="form-check-label custom-check" for="equipo_administracion_no">
                                         No
                                     </label>
@@ -535,13 +535,13 @@
                             <div class="mb-2">
                                 <label class="mb-2">¿Cuentas con base de datos de usuarios actualmente?</label>
                                 <div class="form-check">
-                                    <input class="form-check-input custom-check" type="radio" name="base_datos" id="base_datos_si" value="si">
+                                    <input class="form-check-input custom-check" type="radio" name="base_datos" id="base_datos_si" value="Sí">
                                     <label class="form-check-label custom-check" for="base_datos_si">
                                         Sí
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input custom-check" type="radio" name="base_datos" id="base_datos_no" value="no">
+                                    <input class="form-check-input custom-check" type="radio" name="base_datos" id="base_datos_no" value="No">
                                     <label class="form-check-label custom-check" for="base_datos_no">
                                         No
                                     </label>
@@ -567,43 +567,43 @@
                             <div class="mb-2 formulario__grupo" id="grupo__datos_usuarios">
                                 <label class="mb-2">¿Qué datos tienes de tus usuarios almacenados actualmente?</label>
                                 <div class="form-check">
-                                    <input class="form-check-input custom-check" type="checkbox" name="datos_usuarios[]" id="datos_usuarios_nombre_usuario" value="nombre_usuario">
+                                    <input class="form-check-input custom-check" type="checkbox" name="datos_usuarios[]" id="datos_usuarios_nombre_usuario" value="Nombre Usuario">
                                     <label class="form-check-label custom-check" for="datos_usuarios_nombre_usuario">
                                         Nombre Usuario
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input custom-check" type="checkbox" name="datos_usuarios[]" id="datos_usuarios_correo" value="correo">
+                                    <input class="form-check-input custom-check" type="checkbox" name="datos_usuarios[]" id="datos_usuarios_correo" value="Correo">
                                     <label class="form-check-label custom-check" for="datos_usuarios_correo">
                                         Correo
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input custom-check" type="checkbox" name="datos_usuarios[]" id="datos_usuarios_telefono" value="telefono">
+                                    <input class="form-check-input custom-check" type="checkbox" name="datos_usuarios[]" id="datos_usuarios_telefono" value="Teléfono">
                                     <label class="form-check-label custom-check" for="datos_usuarios_telefono">
                                         Teléfono
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input custom-check" type="checkbox" name="datos_usuarios[]" id="datos_usuarios_monto_compra" value="monto_compra">
+                                    <input class="form-check-input custom-check" type="checkbox" name="datos_usuarios[]" id="datos_usuarios_monto_compra" value="Monto de Compra">
                                     <label class="form-check-label custom-check" for="datos_usuarios_monto_compra">
                                         Monto de Compra
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input custom-check" type="checkbox" name="datos_usuarios[]" id="datos_usuarios_articulo_comprado" value="articulo_comprado">
+                                    <input class="form-check-input custom-check" type="checkbox" name="datos_usuarios[]" id="datos_usuarios_articulo_comprado" value="Artículo comprado">
                                     <label class="form-check-label custom-check" for="datos_usuarios_articulo_comprado">
                                         Artículo comprado
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input custom-check" type="checkbox" name="datos_usuarios[]" id="datos_usuarios_numero_compras" value="numero_compras">
+                                    <input class="form-check-input custom-check" type="checkbox" name="datos_usuarios[]" id="datos_usuarios_numero_compras" value="Número de Compras">
                                     <label class="form-check-label custom-check" for="datos_usuarios_numero_compras">
                                         Número de Compras
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input custom-check" type="checkbox" name="datos_usuarios[]" id="datos_usuarios_otros_datos" value="otros_datos" onchange="checkDatosUsuarios()">
+                                    <input class="form-check-input custom-check" type="checkbox" name="datos_usuarios[]" id="datos_usuarios_otros_datos" value="Otros" onchange="checkDatosUsuarios()">
                                     <label class="form-check-label custom-check" for="datos_usuarios_otros_datos">
                                         Otros:
                                     </label>
@@ -626,13 +626,13 @@
                             <div class="mb-2 formulario__grupo" id="grupo__herramientas_email">
                                 <label class="formulario__label mb-2">¿Han trabajado con herramientas de E-mail marketing? <span class="required_field">*</span></label>
                                 <div class="form-check">
-                                    <input class="form-check-input custom-check" type="radio" name="herramientas_email" id="herramientas_email_si" value="si" required>
+                                    <input class="form-check-input custom-check" type="radio" name="herramientas_email" id="herramientas_email_si" value="Sí" required>
                                     <label class="form-check-label custom-check" for="herramientas_email_si">
                                         Sí
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input custom-check" type="radio" name="herramientas_email" id="herramientas_email_no" value="no" checked required>
+                                    <input class="form-check-input custom-check" type="radio" name="herramientas_email" id="herramientas_email_no" value="No" checked required>
                                     <label class="form-check-label custom-check" for="herramientas_email_no">
                                         No
                                     </label>
@@ -659,13 +659,13 @@
                             <div class="mb-2 formulario__grupo" id="grupo__flujos_correo">
                                 <label class="formulario__label mb-2">¿Han trabajado con flujos de correo electrónico de carritos abandonados? <span class="required_field">*</span></label>
                                 <div class="form-check">
-                                    <input class="form-check-input custom-check" type="radio" name="flujos_correo" id="flujos_correo_si" value="si" required>
+                                    <input class="form-check-input custom-check" type="radio" name="flujos_correo" id="flujos_correo_si" value="Sí" required>
                                     <label class="form-check-label custom-check" for="flujos_correo_si">
                                         Sí
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input custom-check" type="radio" name="flujos_correo" id="flujos_correo_no" value="no" checked required>
+                                    <input class="form-check-input custom-check" type="radio" name="flujos_correo" id="flujos_correo_no" value="No" checked required>
                                     <label class="form-check-label custom-check" for="flujos_correo_no">
                                         No
                                     </label>
@@ -715,19 +715,19 @@
                             <div class="mb-2 formulario__grupo" id="grupo__atencion_cliente">
                                 <label class="formulario__label mb-2">¿Tienes atención a cliente de manera activa? <span class="required_field">*</span></label>
                                 <div class="form-check">
-                                    <input class="form-check-input custom-check" type="radio" name="atencion_cliente" id="atencion_cliente_si" value="si" required onchange="checkAtencionCliente()">
+                                    <input class="form-check-input custom-check" type="radio" name="atencion_cliente" id="atencion_cliente_si" value="Sí" required onchange="checkAtencionCliente()">
                                     <label class="form-check-label custom-check" for="atencion_cliente_si">
                                         Sí
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input custom-check" type="radio" name="atencion_cliente" id="atencion_cliente_no" value="no" checked required onchange="checkAtencionCliente()">
+                                    <input class="form-check-input custom-check" type="radio" name="atencion_cliente" id="atencion_cliente_no" value="No" checked required onchange="checkAtencionCliente()">
                                     <label class="form-check-label custom-check" for="atencion_cliente_no">
                                         No
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input custom-check" type="radio" name="atencion_cliente" id="atencion_cliente_otros" value="otros" required onchange="checkAtencionCliente()">
+                                    <input class="form-check-input custom-check" type="radio" name="atencion_cliente" id="atencion_cliente_otros" value="Otros" required onchange="checkAtencionCliente()">
                                     <label class="form-check-label custom-check" for="atencion_cliente_otros">
                                         Otros:
                                     </label>
@@ -739,25 +739,25 @@
                             <div class="mb-2 formulario__grupo" id="grupo__atencion_cliente_digitales">
                                 <label class="formulario__label mb-2">¿En cuáles medios digitales cuentas con atención a cliente? <span class="required_field">*</span></label>
                                 <div class="form-check">
-                                    <input class="form-check-input custom-check" type="checkbox" name="atencion_cliente_digitales[]" id="atencion_clientes_facebook" value="facebook">
+                                    <input class="form-check-input custom-check" type="checkbox" name="atencion_cliente_digitales[]" id="atencion_clientes_facebook" value="Facebook">
                                     <label class="form-check-label custom-check" for="atencion_clientes_facebook">
                                         Facebook
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input custom-check" type="checkbox" name="atencion_cliente_digitales[]" id="atencion_clientes_instagram" value="instagram">
+                                    <input class="form-check-input custom-check" type="checkbox" name="atencion_cliente_digitales[]" id="atencion_clientes_instagram" value="Instagram">
                                     <label class="form-check-label custom-check" for="atencion_clientes_instagram">
                                         Instagram
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input custom-check" type="checkbox" name="atencion_cliente_digitales[]" id="atencion_clientes_whatsapp" value="whatsapp">
+                                    <input class="form-check-input custom-check" type="checkbox" name="atencion_cliente_digitales[]" id="atencion_clientes_whatsapp" value="WhatsApp">
                                     <label class="form-check-label custom-check" for="atencion_clientes_whatsapp">
                                         WhatsApp
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input custom-check" type="checkbox" name="atencion_cliente_digitales[]" id="atencion_clientes_otros" value="otros" onchange="checkAtencionClientesDigitales()">
+                                    <input class="form-check-input custom-check" type="checkbox" name="atencion_cliente_digitales[]" id="atencion_clientes_otros" value="Otros" onchange="checkAtencionClientesDigitales()">
                                     <label class="form-check-label custom-check" for="atencion_clientes_otros">
                                         Otros:
                                     </label>
