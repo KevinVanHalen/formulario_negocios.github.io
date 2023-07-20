@@ -1850,6 +1850,7 @@
 
             let select_industria = document.getElementById('industria')
             campos_json.industria = select_industria.options[select_industria.selectedIndex].text
+            campos_json.otros_industrias_texto = document.getElementById('otros_industrias_texto').value
 
             document.getElementById('form_2').setAttribute('hidden', 1)
             document.getElementById('form_3').removeAttribute('hidden')
@@ -2405,6 +2406,7 @@
             formData.append('modelo_negocio', campos_json.modelo_negocio)
             formData.append('otros_modelos_texto', campos_json.otros_modelos_texto)
             formData.append('industria', campos_json.industria)
+            formData.append('otros_industrias_texto', campos_json.otros_industrias_texto)
             formData.append('ventas_hace_tres_meses', campos_json.ventas_hace_tres_meses)
             formData.append('ventas_hace_dos_meses', campos_json.ventas_hace_dos_meses)
             formData.append('ventas_mes_pasado', campos_json.ventas_mes_pasado)
