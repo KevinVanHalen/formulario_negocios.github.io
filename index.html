@@ -520,19 +520,19 @@
                         <form id="form_3" hidden>
                             <div class="mb-2 formulario__grupo" id="grupo__ventas_hace_tres_meses">
                                 <label class="formulario__label mb-2" for="ventas_hace_tres_meses">¿Cuánto vendió tu tienda en línea hace tres meses? <span class="required_field">*</span></label>
-                                <input class="required formulario__input" type="number" id="ventas_hace_tres_meses" name="ventas_hace_tres_meses">
+                                <input class="required formulario__input" type="number" min="0" id="ventas_hace_tres_meses" name="ventas_hace_tres_meses">
                                 <p class="formulario__input-error">Esta pregunta es obligatoria</p>
                             </div>
 
                             <div class="mb-2 formulario__grupo" id="grupo__ventas_hace_dos_meses">
                                 <label class="formulario__label mb-2" for="ventas_hace_dos_meses">¿Cuánto vendió tu tienda en línea hace dos meses? <span class="required_field">*</span></label>
-                                <input class="required formulario__input" type="number" id="ventas_hace_dos_meses" name="ventas_hace_dos_meses">
+                                <input class="required formulario__input" type="number" min="0" id="ventas_hace_dos_meses" name="ventas_hace_dos_meses">
                                 <p class="formulario__input-error">Esta pregunta es obligatoria</p>
                             </div>
 
                             <div class="mb-2 formulario__grupo" id="grupo__ventas_mes_pasado">
                                 <label class="formulario__label mb-2" for="ventas_mes_pasado">¿Cuánto vendió tu tienda en línea el mes pasado? <span class="required_field">*</span></label>
-                                <input class="required formulario__input" type="number" id="ventas_mes_pasado" name="ventas_mes_pasado">
+                                <input class="required formulario__input" type="number" min="0" id="ventas_mes_pasado" name="ventas_mes_pasado">
                                 <p class="formulario__input-error">Esta pregunta es obligatoria</p>
                             </div>
                             
@@ -827,7 +827,7 @@
                         <form id="form_8" hidden>
                             <div class="mb-2">
                                 <label class="mb-2" for="presupuesto_marketing">¿En caso de aplicar, cuál es el presupuesto que se invierte mensualmente en marketing digital?</label>
-                                <input type="number" id="presupuesto_marketing" name="presupuesto_marketing">
+                                <input type="number" min="0" id="presupuesto_marketing" name="presupuesto_marketing" onkeyup="validarNegativos(this)">
                             </div>
 
                             <div class="mb-2 formulario__grupo" id="grupo__publicidad_no_digital">
@@ -960,7 +960,7 @@
 
                             <div class="mb-2">
                                 <label class="mb-2" for="usuarios_base_datos">¿Cuántos usuarios tienen en sus bases de datos?</label>
-                                <input type="number" id="usuarios_base_datos" name="usuarios_base_datos">
+                                <input type="number" min="0" id="usuarios_base_datos" name="usuarios_base_datos" onkeyup="validarNegativos(this)">
                             </div>
 
                             <div class="div-actions">
@@ -1351,6 +1351,11 @@
         select.addEventListener('change', validarFormularioInputsTextareas)
     })
 
+    const validarNegativos = (e) => {
+        if (e.value < 0) {
+            e.value = 0
+        }
+    }
 
 
 
@@ -1676,12 +1681,15 @@
 
             case "ventas_hace_tres_meses":
                 validarCampo(e.target, 'ventas_hace_tres_meses')
+                validarNegativos(e.target)
                 break
             case "ventas_hace_dos_meses":
                 validarCampo(e.target, 'ventas_hace_dos_meses')
+                validarNegativos(e.target)
                 break
             case "ventas_mes_pasado":
                 validarCampo(e.target, 'ventas_mes_pasado')
+                validarNegativos(e.target)
                 break
 
             case "objetivo_ventas":
