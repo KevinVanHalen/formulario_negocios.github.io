@@ -183,15 +183,15 @@ const validarInput = (e) => {
 
         case "ventas_hace_tres_meses":
             validarCampo(e.target, 'ventas_hace_tres_meses')
-            validarNegativos(e.target)
+            // validarNegativos(e.target)
             break
         case "ventas_hace_dos_meses":
             validarCampo(e.target, 'ventas_hace_dos_meses')
-            validarNegativos(e.target)
+            // validarNegativos(e.target)
             break
         case "ventas_mes_pasado":
             validarCampo(e.target, 'ventas_mes_pasado')
-            validarNegativos(e.target)
+            // validarNegativos(e.target)
             break
 
         case "objetivo_ventas":
@@ -626,36 +626,6 @@ function previous_3() {
     document.getElementById('span_number_questions_form_2').textContent = '3'
 }
 
-// function next_5() {
-//     let aplicaciones_integraciones_anterior = document.getElementById('aplicaciones_integraciones_anterior')
-//     let avanzar = true
-
-//     if (aplicaciones_integraciones_anterior.value == '') {
-//         document.querySelector(`#grupo__aplicaciones_integraciones_anterior .formulario__input-error`).classList.add('formulario__input-error-activo')
-//         document.getElementById(`grupo__aplicaciones_integraciones_anterior`).classList.add('formulario__grupo-incorrecto')
-//         avanzar = false
-//     } else {
-//         document.querySelector(`#grupo__aplicaciones_integraciones_anterior .formulario__input-error`).classList.remove('formulario__input-error-activo')
-//         document.getElementById(`grupo__aplicaciones_integraciones_anterior`).classList.remove('formulario__grupo-incorrecto')
-//     }
-
-//     if (avanzar) {
-//         campos_json.aplicaciones_integraciones_anterior = document.getElementById('aplicaciones_integraciones_anterior').value
-
-//         document.getElementById('form_5').setAttribute('hidden', 1)
-//         document.getElementById('form_6').removeAttribute('hidden')
-
-//         document.getElementById('span_number_questions_form_2').textContent = '6'
-//     }
-// }
-
-// function previous_4() {
-//     document.getElementById('form_5').setAttribute('hidden', 1)
-//     document.getElementById('form_4').removeAttribute('hidden')
-
-//     document.getElementById('span_number_questions_form_2').textContent = '4'
-// }
-
 function next_6() {
     let checkboxes_redes_sociales = document.querySelectorAll('input[name="redes_sociales[]"]:checked')
     let avanzar = true
@@ -800,7 +770,7 @@ function next_9() {
 
     if (avanzar) {
         campos_json.plataforma_base_datos_usuarios = document.getElementById('medios_publicidad_pautada').value
-        campos_json.usuarios_base_datos = document.getElementById('presupuesto_mensual_publicidad_pautada').value
+        campos_json.usuarios_base_datos = document.getElementById('usuarios_base_datos').value
 
         document.getElementById('form_9').setAttribute('hidden', 1)
         document.getElementById('form_10').removeAttribute('hidden')
