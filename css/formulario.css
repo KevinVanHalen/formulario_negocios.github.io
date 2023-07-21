@@ -384,7 +384,7 @@ label {
 
 .container-t1-form {
     height: auto;
-    padding: 20px;
+    padding: 10px;
     background-color: rgba(219,59,43,1);
 }
 
@@ -422,4 +422,8 @@ label {
 
 .second-container {
     width: 100%
+}
+
+.row {
+    --bs-gutter-x: 0;
 }
