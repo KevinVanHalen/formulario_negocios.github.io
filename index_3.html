@@ -170,17 +170,28 @@
                                 <p class="formulario__input-error">Esta pregunta es obligatoria</p>
                             </div>
 
-                            <div class="mb-2 formulario__grupo" id="grupo__aplicaciones_integraciones_anterior">
-                                <label class="formulario__label mb-2" for="aplicaciones_integraciones_anterior">¿Qué aplicaciones o integraciones utilizabas en tu tienda en línea anterior? <span class="required_field">*</span></label>
-                                <textarea class="required formulario__input" id="aplicaciones_integraciones_anterior" name="aplicaciones_integraciones_anterior" rows="3" cols="50"></textarea>
-                                <p class="formulario__input-error">Esta pregunta es obligatoria</p>
-                            </div>
-
                             <div class="div-actions">
                                 <button id="previous_button_3" type="button" class="btn custom-button mr-4 mt-2" onclick="previous_3()">
                                     <span>Anterior</span>
                                 </button>
                                 <button id="next_button_4" type="button" class="btn custom-button ml-4 mt-2" onclick="next_4()">
+                                    <span>Siguiente</span>
+                                </button>
+                            </div>
+                        </form>
+
+                        <form id="form_5" hidden>
+                            <div class="mb-2 formulario__grupo" id="grupo__aplicaciones_integraciones_anterior">
+                                <label class="formulario__label mb-2" for="aplicaciones_integraciones_anterior">¿Qué aplicaciones o integraciones utilizabas en tu tienda en línea anterior? <span class="required_field">*</span></label>
+                                <textarea class="required formulario__input" id="aplicaciones_integraciones_anterior" name="aplicaciones_integraciones_anterior" rows="4" cols="50"></textarea>
+                                <p class="formulario__input-error">Esta pregunta es obligatoria</p>
+                            </div>
+
+                            <div class="div-actions">
+                                <button id="previous_button_4" type="button" class="btn custom-button mr-4 mt-2" onclick="previous_4()">
+                                    <span>Anterior</span>
+                                </button>
+                                <button id="next_button_5" type="button" class="btn custom-button ml-4 mt-2" onclick="next_5()">
                                     <span>Siguiente</span>
                                 </button>
                             </div>
@@ -480,7 +491,7 @@
                         </div>
 
                         <div class="custom_div_count_questions" id="div_count_questions">
-                            <p><span id="span_number_questions_form_2">1</span>/12</p>
+                            <p><span id="span_number_questions_form_2">1</span>/13</p>
                         </div>
                     </div>
                 </div>

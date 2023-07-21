@@ -347,13 +347,6 @@ function checkPlataformaEcommerce() {
         document.querySelector(`#grupo__plataforma_ecommerce .formulario__input-error`).classList.remove('formulario__input-error-activo')
         document.getElementById(`grupo__plataforma_ecommerce`).classList.remove('formulario__grupo-incorrecto')
     }
-
-    if (document.getElementById('ninguna_plataforma_ecommerce').checked == false) {
-        document.getElementById('grupo__aplicaciones_integraciones_anterior').removeAttribute('hidden')
-    } else {
-        document.getElementById('grupo__aplicaciones_integraciones_anterior').setAttribute("hidden", true)
-        document.getElementById('aplicaciones_integraciones_anterior').value = ''
-    }
 }
 
 function validarCampoOtroPlataformaEcommerce() {
@@ -586,23 +579,10 @@ function previous_2() {
 function next_4() {
     let otros_plataforma_ecommerce_check = document.getElementById('otros_plataforma_ecommerce')
     let otros_plataforma_ecommerce_texto = document.getElementById('otros_plataforma_ecommerce_texto')
-    let aplicaciones_integraciones_anterior = document.getElementById('aplicaciones_integraciones_anterior')
     let avanzar = true
-
 
     if (otros_plataforma_ecommerce_check.checked && otros_plataforma_ecommerce_texto.value == '') {
         avanzar = false
-    }
-
-    if (document.getElementById('ninguna_plataforma_ecommerce').checked == false){
-        if (aplicaciones_integraciones_anterior.value == '') {
-            document.querySelector(`#grupo__aplicaciones_integraciones_anterior .formulario__input-error`).classList.add('formulario__input-error-activo')
-            document.getElementById(`grupo__aplicaciones_integraciones_anterior`).classList.add('formulario__grupo-incorrecto')
-            avanzar = false
-        } else {
-            document.querySelector(`#grupo__aplicaciones_integraciones_anterior .formulario__input-error`).classList.remove('formulario__input-error-activo')
-            document.getElementById(`grupo__aplicaciones_integraciones_anterior`).classList.remove('formulario__grupo-incorrecto')
-        }
     }
 
     if (avanzar) {
@@ -610,10 +590,8 @@ function next_4() {
         campos_json.plataforma_ecommerce = checkboxes_plataforma_ecommerce[0].value
         campos_json.otros_plataforma_ecommerce_texto = document.getElementById('otros_plataforma_ecommerce_texto').value
 
-        campos_json.aplicaciones_integraciones_anterior = document.getElementById('aplicaciones_integraciones_anterior').value
-
         document.getElementById('form_4').setAttribute('hidden', 1)
-        document.getElementById('form_6').removeAttribute('hidden')
+        document.getElementById('form_5').removeAttribute('hidden')
 
         document.getElementById('span_number_questions_form_2').textContent = '5'
     }
@@ -626,35 +604,35 @@ function previous_3() {
     document.getElementById('span_number_questions_form_2').textContent = '3'
 }
 
-// function next_5() {
-//     let aplicaciones_integraciones_anterior = document.getElementById('aplicaciones_integraciones_anterior')
-//     let avanzar = true
+function next_5() {
+    let aplicaciones_integraciones_anterior = document.getElementById('aplicaciones_integraciones_anterior')
+    let avanzar = true
 
-//     if (aplicaciones_integraciones_anterior.value == '') {
-//         document.querySelector(`#grupo__aplicaciones_integraciones_anterior .formulario__input-error`).classList.add('formulario__input-error-activo')
-//         document.getElementById(`grupo__aplicaciones_integraciones_anterior`).classList.add('formulario__grupo-incorrecto')
-//         avanzar = false
-//     } else {
-//         document.querySelector(`#grupo__aplicaciones_integraciones_anterior .formulario__input-error`).classList.remove('formulario__input-error-activo')
-//         document.getElementById(`grupo__aplicaciones_integraciones_anterior`).classList.remove('formulario__grupo-incorrecto')
-//     }
+    if (aplicaciones_integraciones_anterior.value == '') {
+        document.querySelector(`#grupo__aplicaciones_integraciones_anterior .formulario__input-error`).classList.add('formulario__input-error-activo')
+        document.getElementById(`grupo__aplicaciones_integraciones_anterior`).classList.add('formulario__grupo-incorrecto')
+        avanzar = false
+    } else {
+        document.querySelector(`#grupo__aplicaciones_integraciones_anterior .formulario__input-error`).classList.remove('formulario__input-error-activo')
+        document.getElementById(`grupo__aplicaciones_integraciones_anterior`).classList.remove('formulario__grupo-incorrecto')
+    }
 
-//     if (avanzar) {
-//         campos_json.aplicaciones_integraciones_anterior = document.getElementById('aplicaciones_integraciones_anterior').value
+    if (avanzar) {
+        campos_json.aplicaciones_integraciones_anterior = document.getElementById('aplicaciones_integraciones_anterior').value
 
-//         document.getElementById('form_5').setAttribute('hidden', 1)
-//         document.getElementById('form_6').removeAttribute('hidden')
+        document.getElementById('form_5').setAttribute('hidden', 1)
+        document.getElementById('form_6').removeAttribute('hidden')
 
-//         document.getElementById('span_number_questions_form_2').textContent = '6'
-//     }
-// }
+        document.getElementById('span_number_questions_form_2').textContent = '6'
+    }
+}
 
-// function previous_4() {
-//     document.getElementById('form_5').setAttribute('hidden', 1)
-//     document.getElementById('form_4').removeAttribute('hidden')
+function previous_4() {
+    document.getElementById('form_5').setAttribute('hidden', 1)
+    document.getElementById('form_4').removeAttribute('hidden')
 
-//     document.getElementById('span_number_questions_form_2').textContent = '4'
-// }
+    document.getElementById('span_number_questions_form_2').textContent = '4'
+}
 
 function next_6() {
     let checkboxes_redes_sociales = document.querySelectorAll('input[name="redes_sociales[]"]:checked')
@@ -690,15 +668,15 @@ function next_6() {
         document.getElementById('form_6').setAttribute('hidden', 1)
         document.getElementById('form_7').removeAttribute('hidden')
 
-        document.getElementById('span_number_questions_form_2').textContent = '6'
+        document.getElementById('span_number_questions_form_2').textContent = '7'
     }
 }
 
 function previous_5() {
     document.getElementById('form_6').setAttribute('hidden', 1)
-    document.getElementById('form_4').removeAttribute('hidden')
+    document.getElementById('form_5').removeAttribute('hidden')
 
-    document.getElementById('span_number_questions_form_2').textContent = '4'
+    document.getElementById('span_number_questions_form_2').textContent = '5'
 }
 
 function next_7() {
@@ -739,7 +717,7 @@ function next_7() {
         document.getElementById('form_7').setAttribute('hidden', 1)
         document.getElementById('form_8').removeAttribute('hidden')
 
-        document.getElementById('span_number_questions_form_2').textContent = '7'
+        document.getElementById('span_number_questions_form_2').textContent = '8'
     }
 }
 
@@ -747,7 +725,7 @@ function previous_6() {
     document.getElementById('form_7').setAttribute('hidden', 1)
     document.getElementById('form_6').removeAttribute('hidden')
 
-    document.getElementById('span_number_questions_form_2').textContent = '5'
+    document.getElementById('span_number_questions_form_2').textContent = '6'
 }
 
 function next_8() {
@@ -757,14 +735,14 @@ function next_8() {
     document.getElementById('form_8').setAttribute('hidden', 1)
     document.getElementById('form_9').removeAttribute('hidden')
 
-    document.getElementById('span_number_questions_form_2').textContent = '8'
+    document.getElementById('span_number_questions_form_2').textContent = '9'
 }
 
 function previous_7() {
     document.getElementById('form_8').setAttribute('hidden', 1)
     document.getElementById('form_7').removeAttribute('hidden')
 
-    document.getElementById('span_number_questions_form_2').textContent = '6'
+    document.getElementById('span_number_questions_form_2').textContent = '7'
 }
 
 function next_9() {
@@ -805,7 +783,7 @@ function next_9() {
         document.getElementById('form_9').setAttribute('hidden', 1)
         document.getElementById('form_10').removeAttribute('hidden')
 
-        document.getElementById('span_number_questions_form_2').textContent = '9'
+        document.getElementById('span_number_questions_form_2').textContent = '10'
     }
 }
 
@@ -813,7 +791,7 @@ function previous_8() {
     document.getElementById('form_9').setAttribute('hidden', 1)
     document.getElementById('form_8').removeAttribute('hidden')
 
-    document.getElementById('span_number_questions_form_2').textContent = '7'
+    document.getElementById('span_number_questions_form_2').textContent = '8'
 }
 
 function next_10() {
@@ -842,7 +820,7 @@ function next_10() {
         document.getElementById('form_10').setAttribute('hidden', 1)
         document.getElementById('form_11').removeAttribute('hidden')
 
-        document.getElementById('span_number_questions_form_2').textContent = '10'
+        document.getElementById('span_number_questions_form_2').textContent = '11'
     }
 }
 
@@ -850,7 +828,7 @@ function previous_9() {
     document.getElementById('form_10').setAttribute('hidden', 1)
     document.getElementById('form_9').removeAttribute('hidden')
 
-    document.getElementById('span_number_questions_form_2').textContent = '8'
+    document.getElementById('span_number_questions_form_2').textContent = '9'
 }
 
 function next_11() {
@@ -883,7 +861,7 @@ function next_11() {
         document.getElementById('form_11').setAttribute('hidden', 1)
         document.getElementById('form_12').removeAttribute('hidden')
 
-        document.getElementById('span_number_questions_form_2').textContent = '11'
+        document.getElementById('span_number_questions_form_2').textContent = '12'
     }
 }
 
@@ -891,7 +869,7 @@ function previous_10() {
     document.getElementById('form_11').setAttribute('hidden', 1)
     document.getElementById('form_10').removeAttribute('hidden')
 
-    document.getElementById('span_number_questions_form_2').textContent = '9'
+    document.getElementById('span_number_questions_form_2').textContent = '10'
 }
 
 function next_12() {
@@ -935,7 +913,7 @@ function next_12() {
         document.getElementById('form_12').setAttribute('hidden', 1)
         document.getElementById('form_13').removeAttribute('hidden')
 
-        document.getElementById('span_number_questions_form_2').textContent = '12'
+        document.getElementById('span_number_questions_form_2').textContent = '13'
     }
 }
 
@@ -943,7 +921,7 @@ function previous_11() {
     document.getElementById('form_12').setAttribute('hidden', 1)
     document.getElementById('form_11').removeAttribute('hidden')
 
-    document.getElementById('span_number_questions_form_2').textContent = '10'
+    document.getElementById('span_number_questions_form_2').textContent = '11'
 }
 
 function next_13() {
@@ -1021,7 +999,7 @@ function next_13() {
             alert("Error! No se pudo cargar la información correctamente." )
         })
 
-        document.getElementById('span_number_questions_form_2').textContent = '12'
+        document.getElementById('span_number_questions_form_2').textContent = '13'
     }
 }
 
@@ -1029,5 +1007,5 @@ function previous_12() {
     document.getElementById('form_13').setAttribute('hidden', 1)
     document.getElementById('form_12').removeAttribute('hidden')
 
-    document.getElementById('span_number_questions_form_2').textContent = '11'
+    document.getElementById('span_number_questions_form_2').textContent = '12'
 }
