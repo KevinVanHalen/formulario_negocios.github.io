@@ -37,17 +37,17 @@
 
                     <div class="col-md-6 col-12 container-t1-form">
                         <form id="form_1">
-                            <div class="mb-2 formulario__grupo" id="grupo__email">
-                                <label class="formulario__label mb-2" for="email">Correo electrónico <span class="required_field">*</span></label>
-                                <input class="required formulario__input" type="email" id="email" name="email" onkeyup="validarEmail()">
-                                <p class="formulario__input-error">Esta pregunta es obligatoria</p>
-                                <p class="formulario__input-error_2" hidden id="text_email_invalid">Debe ser un email válido</p>
-                            </div>
-
                             <div class="mb-2 formulario__grupo" id="grupo__nombre_tienda">
-                                <label class="formulario__label mb-2" for="nombre_tienda">¿Cuál es el nombre de tu tienda? <span class="required_field">*</span></label>
+                                <label class="formulario__label mb-2" for="nombre_tienda">Nombre de la empresa: <span class="required_field">*</span></label>
                                 <input class="required formulario__input" type="text" id="nombre_tienda" name="nombre_tienda">
                                 <p class="formulario__input-error">Esta pregunta es obligatoria</p>
+                            </div>
+
+                            <div class="mb-2 formulario__grupo" id="grupo__email">
+                                <label class="formulario__label mb-2" for="email">Dirección de correo electrónico: <span class="required_field">*</span></label>
+                                <input class="required formulario__input" type="email" id="email" name="email" onkeyup="validarEmail()">
+                                <p class="formulario__input-error">Esta pregunta es obligatoria</p>
+                                <p class="formulario__input-error_2" hidden id="text_email_invalid">Debe ser un correo electrónico válido</p>
                             </div>
                             
                             <div class="first-next-button">
@@ -59,17 +59,23 @@
 
                         <form id="form_2" hidden>
                             <div class="mb-2 formulario__grupo" id="grupo__modelo_negocio">
-                                <label class="formulario__label mb-2">¿Tu modelo de negocio de venta va dirigido a empresas o a consumidor final? <span class="required_field">*</span></label>
+                                <label class="formulario__label mb-2">¿A quién va dirigido el modelo de tu negocio? <span class="required_field">*</span></label>
                                 <div class="form-check">
-                                    <input class="form-check-input custom-check" type="radio" name="modelo_negocio" id="consumidor_final" value="Consumidor Final" checked required onchange="checkModeloNegocios()">
-                                    <label class="form-check-label custom-check" for="consumidor_final">
-                                        Consumidor Final (Venta de producto al por menor)
+                                    <input class="form-check-input custom-check" type="radio" name="modelo_negocio" id="empresa" value="Empresas" checked required onchange="checkModeloNegocios()">
+                                    <label class="form-check-label custom-check" for="empresa">
+                                        Empresas
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input custom-check" type="radio" name="modelo_negocio" id="empresa" value="Empresa" required onchange="checkModeloNegocios()">
-                                    <label class="form-check-label custom-check" for="empresa">
-                                        Empresa (Venta de servicios o mayoreo)
+                                    <input class="form-check-input custom-check" type="radio" name="modelo_negocio" id="consumidor_final" value="Consumidor Final" required onchange="checkModeloNegocios()">
+                                    <label class="form-check-label custom-check" for="consumidor_final">
+                                        Consumidor Final
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input custom-check" type="radio" name="modelo_negocio" id="modelo_negocio_ambos" value="Ambos" required onchange="checkModeloNegocios()">
+                                    <label class="form-check-label custom-check" for="modelo_negocio_ambos">
+                                        Ambos
                                     </label>
                                 </div>
                                 <div class="form-check">
@@ -82,21 +88,6 @@
                                 <p class="formulario__input-error">Esta pregunta es obligatoria</p>
                             </div>
 
-                            <div class="mb-2 formulario__grupo" id="grupo__industria">
-                                <label class="formulario__label mb-2" for="industria">¿En qué industria clasificarías a tu empresa? <span class="required_field">*</span></label>
-                                <select class="form-select required formulario__input" aria-label="Default select example" id="industria" name="industria" onchange="checkIndustria()">
-                                    <option value="" selected disabled>Selecciona una opción</option>
-                                    <option value="Moda">Moda</option>
-                                    <option value="Comida">Comida</option>
-                                    <option value="Bebidas">Bebidas</option>
-                                    <option value="Electrónicos">Electrónicos</option>
-                                    <option value="Accesorios">Accesorios (Joyería, Relojería, etc)</option>
-                                    <option value="Otros">Otros</option>
-                                </select>
-                                <input class="mt-3 formulario__input" type="text" id="otros_industrias_texto" name="otros_industrias_texto" hidden onkeyup="validarCampoIndustria()">
-                                <p class="formulario__input-error">Esta pregunta es obligatoria</p>
-                            </div>
-                            
                             <div class="div-actions">
                                 <button id="previous_button_1" type="button" class="btn custom-button mr-4 mt-2" onclick="previous_1()">
                                     <span>Anterior</span>
@@ -108,21 +99,21 @@
                         </form>
 
                         <form id="form_3" hidden>
-                            <div class="mb-2 formulario__grupo" id="grupo__ventas_hace_tres_meses">
-                                <label class="formulario__label mb-2" for="ventas_hace_tres_meses">¿Cuánto vendió tu tienda en línea hace tres meses? <span class="required_field">*</span></label>
-                                <input class="required formulario__input" type="number" min="0" id="ventas_hace_tres_meses" name="ventas_hace_tres_meses">
-                                <p class="formulario__input-error">Esta pregunta es obligatoria</p>
-                            </div>
-
-                            <div class="mb-2 formulario__grupo" id="grupo__ventas_hace_dos_meses">
-                                <label class="formulario__label mb-2" for="ventas_hace_dos_meses">¿Cuánto vendió tu tienda en línea hace dos meses? <span class="required_field">*</span></label>
-                                <input class="required formulario__input" type="number" min="0" id="ventas_hace_dos_meses" name="ventas_hace_dos_meses">
-                                <p class="formulario__input-error">Esta pregunta es obligatoria</p>
-                            </div>
-
-                            <div class="mb-2 formulario__grupo" id="grupo__ventas_mes_pasado">
-                                <label class="formulario__label mb-2" for="ventas_mes_pasado">¿Cuánto vendió tu tienda en línea el mes pasado? <span class="required_field">*</span></label>
-                                <input class="required formulario__input" type="number" min="0" id="ventas_mes_pasado" name="ventas_mes_pasado">
+                            <div class="mb-2 formulario__grupo" id="grupo__industria">
+                                <label class="formulario__label mb-2" for="industria">¿En qué industria se clasifica tu empresa? <span class="required_field">*</span></label>
+                                <select class="form-select required formulario__input" aria-label="Default select example" id="industria" name="industria" onchange="checkIndustria()">
+                                    <option value="" selected disabled>Selecciona una opción</option>
+                                    <option value="Tecnología y electrónicas">Tecnología y electrónicas</option>
+                                    <option value="Alimentación y bebidas">Alimentación y bebidas</option>
+                                    <option value="Moda">Moda</option>
+                                    <option value="Salud y Bienestar">Salud y Bienestar</option>
+                                    <option value="Automotriz y transporte">Automotriz y transporte</option>
+                                    <option value="Entretenimiento">Entretenimiento</option>
+                                    <option value="Accesorios">Accesorios (Joyería, Relojería, etc)</option>
+                                    <option value="Deportes">Deportes</option>
+                                    <option value="Otros">Otros</option>
+                                </select>
+                                <input class="mt-3 formulario__input" type="text" id="otros_industrias_texto" name="otros_industrias_texto" hidden onkeyup="validarCampoIndustria()">
                                 <p class="formulario__input-error">Esta pregunta es obligatoria</p>
                             </div>
                             
@@ -137,6 +128,76 @@
                         </form>
 
                         <form id="form_4" hidden>
+                            <div class="mb-2 formulario__grupo" id="grupo__plataforma_ecommerce">
+                                <label class="formulario__label mb-2">¿Qué plataforma de e-commerce utilizabas anteriormente? <span class="required_field">*</span></label>
+                                <div class="form-check">
+                                    <input class="form-check-input custom-check" type="radio" name="plataforma_ecommerce" id="shopify" value="Shopify" checked required onchange="checkPlataformaEcommerce()">
+                                    <label class="form-check-label custom-check" for="shopify">
+                                        Shopify
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input custom-check" type="radio" name="plataforma_ecommerce" id="magento" value="Magento" required onchange="checkPlataformaEcommerce()">
+                                    <label class="form-check-label custom-check" for="magento">
+                                        Magento
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input custom-check" type="radio" name="plataforma_ecommerce" id="woocommerce" value="WooCommerce" required onchange="checkPlataformaEcommerce()">
+                                    <label class="form-check-label custom-check" for="woocommerce">
+                                        WooCommerce
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input custom-check" type="radio" name="plataforma_ecommerce" id="tienda_nube" value="Tienda nube" required onchange="checkPlataformaEcommerce()">
+                                    <label class="form-check-label custom-check" for="tienda_nube">
+                                        Tienda nube
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input custom-check" type="radio" name="plataforma_ecommerce" id="ninguna_plataforma_ecommerce" value="Ninguna" required onchange="checkPlataformaEcommerce()">
+                                    <label class="form-check-label custom-check" for="ninguna_plataforma_ecommerce">
+                                        Ninguna
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input custom-check" type="radio" name="plataforma_ecommerce" id="otros_plataforma_ecommerce" value="Otros" required onchange="checkPlataformaEcommerce()">
+                                    <label class="form-check-label custom-check" for="otros_plataforma_ecommerce">
+                                        Otros:
+                                    </label>
+                                </div>
+                                <input class="mt-3 formulario__input" type="text" id="otros_plataforma_ecommerce_texto" name="otros_plataforma_ecommerce_texto" hidden onkeyup="validarCampoOtroPlataformaEcommerce()">
+                                <p class="formulario__input-error">Esta pregunta es obligatoria</p>
+                            </div>
+
+                            <div class="div-actions">
+                                <button id="previous_button_3" type="button" class="btn custom-button mr-4 mt-2" onclick="previous_3()">
+                                    <span>Anterior</span>
+                                </button>
+                                <button id="next_button_4" type="button" class="btn custom-button ml-4 mt-2" onclick="next_4()">
+                                    <span>Siguiente</span>
+                                </button>
+                            </div>
+                        </form>
+
+                        <form id="form_5" hidden>
+                            <div class="mb-2 formulario__grupo" id="grupo__aplicaciones_integraciones_anterior">
+                                <label class="formulario__label mb-2" for="aplicaciones_integraciones_anterior">¿Qué aplicaciones o integraciones utilizabas en tu tienda en línea anterior? <span class="required_field">*</span></label>
+                                <textarea class="required formulario__input" id="aplicaciones_integraciones_anterior" name="aplicaciones_integraciones_anterior" rows="4" cols="50"></textarea>
+                                <p class="formulario__input-error">Esta pregunta es obligatoria</p>
+                            </div>
+
+                            <div class="div-actions">
+                                <button id="previous_button_4" type="button" class="btn custom-button mr-4 mt-2" onclick="previous_4()">
+                                    <span>Anterior</span>
+                                </button>
+                                <button id="next_button_5" type="button" class="btn custom-button ml-4 mt-2" onclick="next_5()">
+                                    <span>Siguiente</span>
+                                </button>
+                            </div>
+                        </form>
+
+                        <form id="form_6" hidden>
                             <div class="mb-2 formulario__grupo" id="grupo__redes_sociales">
                                 <label id="label_redes_sociales" class="formulario__label mb-2">¿Cuáles redes sociales utilizas actualmente? <span class="required_field">*</span></label>
                                 <div class="form-check">
@@ -149,12 +210,6 @@
                                     <input class="form-check-input custom-check" type="checkbox" name="redes_sociales[]" id="instagram" value="Instagram">
                                     <label class="form-check-label custom-check" for="instagram">
                                         Instagram
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input custom-check" type="checkbox" name="redes_sociales[]" id="reddit" value="Reddit">
-                                    <label class="form-check-label custom-check" for="reddit">
-                                        Reddit
                                     </label>
                                 </div>
                                 <div class="form-check">
@@ -182,172 +237,28 @@
                                     </label>
                                 </div>
                                 <div class="form-check">
+                                    <input class="form-check-input custom-check" type="checkbox" name="redes_sociales[]" id="reddit" value="Reddit">
+                                    <label class="form-check-label custom-check" for="reddit">
+                                        Reddit
+                                    </label>
+                                </div>
+                                <div class="form-check">
                                     <input class="form-check-input custom-check" type="checkbox" name="redes_sociales[]" id="ninguna" value="Ninguna">
                                     <label class="form-check-label custom-check" for="ninguna">
                                         Ninguna
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input custom-check" type="checkbox" name="redes_sociales[]" id="otros_redes_sociales" value="Otros" onchange="checkRedesSociales()">
-                                    <label class="form-check-label custom-check" for="otros_redes_sociales">
-                                        Otros:
+                                    <input class="form-check-input custom-check" type="checkbox" name="redes_sociales[]" id="otras_redes_sociales" value="Otra" onchange="checkRedesSociales()">
+                                    <label class="form-check-label custom-check" for="otras_redes_sociales">
+                                        Otra:
                                     </label>
                                 </div>
-                                <input class="mt-2 required formulario__input" type="text" id="otros_redes_sociales_texto" name="otros_redes_sociales_texto" onkeyup="validarCampoOtrasRedesSociales()">
+                                <input class="mt-2 required formulario__input" type="text" id="otras_redes_sociales_texto" name="otras_redes_sociales_texto" onkeyup="validarCampoOtrasRedesSociales()">
                                 <p class="formulario__input-error">Esta pregunta es obligatoria</p>
                                 <p class="formulario__input-error_2" hidden id="select_redes_required">Debe seleccionar al menos una opción</p>
                             </div>
-                            
-                            <div class="div-actions">
-                                <button id="previous_button_3" type="button" class="btn custom-button mr-4 mt-2" onclick="previous_3()">
-                                    <span>Anterior</span>
-                                </button>
-                                <button id="next_button_4" type="button" class="btn custom-button ml-4 mt-2" onclick="next_4()">
-                                    <span>Siguiente</span>
-                                </button>
-                            </div>
-                        </form>
 
-                        <form id="form_5" hidden>
-                            <div class="mb-2 formulario__grupo" id="grupo__formato_publicidad">
-                                <label id="label_formato_publicidad" class="formulario__label mb-2">¿Qué formato de contenido es el que más utilizas para mostrar tu publicidad? <span class="required_field">*</span></label>
-                                <div class="form-check">
-                                    <input class="form-check-input custom-check" type="checkbox" name="formato_publicidad[]" id="videos_largos" value="Videos formato largo">
-                                    <label class="form-check-label custom-check" for="videos_largos">
-                                        Videos formato largo
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input custom-check" type="checkbox" name="formato_publicidad[]" id="videos_cortos" value="Videos cortos en formato vertical">
-                                    <label class="form-check-label custom-check" for="videos_cortos">
-                                        Videos cortos en formato Vertical
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input custom-check" type="checkbox" name="formato_publicidad[]" id="publicaciones_redes" value="Publicaciones en feed de redes sociales">
-                                    <label class="form-check-label custom-check" for="publicaciones_redes">
-                                        Publicaciones en feed de redes sociales
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input custom-check" type="checkbox" name="formato_publicidad[]" id="blogs" value="Blogs">
-                                    <label class="form-check-label custom-check" for="blogs">
-                                        Blogs
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input custom-check" type="checkbox" name="formato_publicidad[]" id="correos_electronicos" value="Correos electrónicos">
-                                    <label class="form-check-label custom-check" for="correos_electronicos">
-                                        Correos electrónicos
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input custom-check" type="checkbox" name="formato_publicidad[]" id="difusion_organica" value="Difusión orgánica fuera de medios electrónicos">
-                                    <label class="form-check-label custom-check" for="difusion_organica">
-                                        Difusión orgánica fuera de medios electrónicos
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input custom-check" type="checkbox" name="formato_publicidad[]" id="influencer_marketing" value="Influencer Mkt">
-                                    <label class="form-check-label custom-check" for="influencer_marketing">
-                                        Influencer Mkt
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input custom-check" type="checkbox" name="formato_publicidad[]" id="otros_formatos" value="Otros" onchange="checkFormatosPublicidad()">
-                                    <label class="form-check-label custom-check" for="otros_formatos">
-                                        Otros:
-                                    </label>
-                                </div>
-                                <input class="mt-2 required formulario__input" type="text" id="otros_formatos_texto" name="otros_formatos_texto" onkeyup="validarCampoOtrosFormatosPublicidad()">
-                                <p class="formulario__input-error">Esta pregunta es obligatoria</p>
-                                <p class="formulario__input-error_2" hidden id="select_formato_publicidad_required">Debe seleccionar al menos una opción</p>
-                            </div>
-                            
-                            <div class="div-actions">
-                                <button id="previous_button_4" type="button" class="btn custom-button mr-4 mt-2" onclick="previous_4()">
-                                    <span>Anterior</span>
-                                </button>
-                                <button id="next_button_5" type="button" class="btn custom-button ml-4 mt-2" onclick="next_5()">
-                                    <span>Siguiente</span>
-                                </button>
-                            </div>
-                        </form>
-
-                        <form id="form_6" hidden>
-                            <div class="mb-2 formulario__grupo" id="grupo__difusion">
-                                <label id="label_difusion" class="formulario__label mb-2">¿Cuáles redes sociales o medios tradicionales utilizas actualmente para hacer una difusión efectiva del contenido? <span class="required_field">*</span></label>
-                                <div class="form-check">
-                                    <input class="form-check-input custom-check" type="checkbox" name="difusion[]" id="facebook_difusion" value="Facebook">
-                                    <label class="form-check-label custom-check" for="facebook_difusion">
-                                        Facebook
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input custom-check" type="checkbox" name="difusion[]" id="instagram_difusion" value="Instagram">
-                                    <label class="form-check-label custom-check" for="instagram_difusion">
-                                        Instagram
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input custom-check" type="checkbox" name="difusion[]" id="reddit_difusion" value="Reddit">
-                                    <label class="form-check-label custom-check" for="reddit_difusion">
-                                        Reddit
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input custom-check" type="checkbox" name="difusion[]" id="twitter_difusion" value="Twitter">
-                                    <label class="form-check-label custom-check" for="twitter_difusion">
-                                        Twitter
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input custom-check" type="checkbox" name="difusion[]" id="tiktok_difusion" value="Tik Tok">
-                                    <label class="form-check-label custom-check" for="tiktok_difusion">
-                                        Tik Tok
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input custom-check" type="checkbox" name="difusion[]" id="pinterest_difusion" value="Pinterest">
-                                    <label class="form-check-label custom-check" for="pinterest_difusion">
-                                        Pinterest
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input custom-check" type="checkbox" name="difusion[]" id="youtube_difusion" value="Youtube">
-                                    <label class="form-check-label custom-check" for="youtube_difusion">
-                                        Youtube
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input custom-check" type="checkbox" name="difusion[]" id="puntos_venta" value="Puntos de venta físicos">
-                                    <label class="form-check-label custom-check" for="puntos_venta">
-                                        Puntos de venta físicos
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input custom-check" type="checkbox" name="difusion[]" id="material_tradicional" value="Material de difusión tradicional">
-                                    <label class="form-check-label custom-check" for="material_tradicional">
-                                        Material de difusión tradicional (Revistas, Periódico, Radio, Televisión, etc)
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input custom-check" type="checkbox" name="difusion[]" id="correo_electronico_difusion" value="Correo Electrónico">
-                                    <label class="form-check-label custom-check" for="correo_electronico_difusion">
-                                        Correo Electrónico
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input custom-check" type="checkbox" name="difusion[]" id="otros_difusion" value="Otros" onchange="checkDifusion()">
-                                    <label class="form-check-label custom-check" for="otros_difusion">
-                                        Otros:
-                                    </label>
-                                </div>
-                                <input class="mt-2 required formulario__input" type="text" id="otros_difusion_texto" name="otros_difusion_texto" onkeyup="validarCampoOtrosDifusion()">
-                                <p class="formulario__input-error">Esta pregunta es obligatoria</p>
-                                <p class="formulario__input-error_2" hidden id="select_difusion_required">Debe seleccionar al menos una opción</p>
-                            </div>
-                            
                             <div class="div-actions">
                                 <button id="previous_button_5" type="button" class="btn custom-button mr-4 mt-2" onclick="previous_5()">
                                     <span>Anterior</span>
@@ -362,13 +273,13 @@
                             <div class="mb-2 formulario__grupo" id="grupo__publicidad_pautada">
                                 <label class="formulario__label mb-2">¿Utilizas publicidad pautada en medios electrónicos? <span class="required_field">*</span></label>
                                 <div class="form-check">
-                                    <input class="form-check-input custom-check" type="radio" name="publicidad_pautada" id="publicidad_pautada_si" value="Sí" required>
+                                    <input class="form-check-input custom-check" type="radio" name="publicidad_pautada" id="publicidad_pautada_si" value="Sí" required onchange="checkPublicidadPautada()">
                                     <label class="form-check-label custom-check" for="publicidad_pautada_si">
                                         Sí
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input custom-check" type="radio" name="publicidad_pautada" id="publicidad_pautada_no" value="No" checked required>
+                                    <input class="form-check-input custom-check" type="radio" name="publicidad_pautada" id="publicidad_pautada_no" value="No" checked required onchange="checkPublicidadPautada()">
                                     <label class="form-check-label custom-check" for="publicidad_pautada_no">
                                         No
                                     </label>
@@ -376,34 +287,18 @@
                                 <p class="formulario__input-error">Esta pregunta es obligatoria</p>
                             </div>
 
-                            <div class="mb-2">
-                                <label class="mb-2">En caso de haber indicado "sí" en la pregunta anterior, favor de indicar cuáles medios digitales utilizas para fines publicitarios:</label>
-                                <div class="form-check">
-                                    <input class="form-check-input custom-check" type="checkbox" name="publicidad_digitales[]" id="publicidad_meta" value="Meta (Facebook/Instagram)">
-                                    <label class="form-check-label custom-check" for="publicidad_meta">
-                                        Meta (Facebook/Instagram)
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input custom-check" type="checkbox" name="publicidad_digitales[]" id="publicidad_google" value="Google">
-                                    <label class="form-check-label custom-check" for="publicidad_google">
-                                        Google
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input custom-check" type="checkbox" name="publicidad_digitales[]" id="publicidad_pinterest" value="Pinterest">
-                                    <label class="form-check-label custom-check" for="publicidad_pinterest">
-                                        Pinterest
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input custom-check" type="checkbox" name="publicidad_digitales[]" id="publicidad_tiktok" value="Tik Tok">
-                                    <label class="form-check-label custom-check" for="publicidad_tiktok">
-                                        Tik Tok
-                                    </label>
-                                </div>
+                            <div class="mb-2 formulario__grupo" id="grupo__medios_publicidad_pautada" hidden>
+                                <label class="formulario__label mb-2" for="medios_publicidad_pautada">¿En que medios? <span class="required_field">*</span></label>
+                                <textarea class="required formulario__input" id="medios_publicidad_pautada" name="medios_publicidad_pautada" rows="4" cols="50"></textarea>
+                                <p class="formulario__input-error">Esta pregunta es obligatoria</p>
                             </div>
-                            
+
+                            <div class="mb-2 formulario__grupo" id="grupo__presupuesto_mensual_publicidad_pautada" hidden>
+                                <label class="formulario__label mb-2" for="presupuesto_mensual_publicidad_pautada">¿Que presupuesto mensual tienen destinado? <span class="required_field">*</span></label>
+                                <input type="number" min="0" id="presupuesto_mensual_publicidad_pautada" name="presupuesto_mensual_publicidad_pautada" onkeyup="validarNegativos(this)">
+                                <p class="formulario__input-error">Esta pregunta es obligatoria</p>
+                            </div>
+
                             <div class="div-actions">
                                 <button id="previous_button_6" type="button" class="btn custom-button mr-4 mt-2" onclick="previous_6()">
                                     <span>Anterior</span>
@@ -416,51 +311,21 @@
 
                         <form id="form_8" hidden>
                             <div class="mb-2">
-                                <label class="mb-2" for="presupuesto_marketing">¿En caso de aplicar, cuál es el presupuesto que se invierte mensualmente en marketing digital?</label>
-                                <input type="number" min="0" id="presupuesto_marketing" name="presupuesto_marketing" onkeyup="validarNegativos(this)">
-                            </div>
-
-                            <div class="mb-2 formulario__grupo" id="grupo__publicidad_no_digital">
-                                <label class="formulario__label mb-2">¿Utilizas publicidad pautada en medios no digitales tradicionales? <span class="required_field">*</span></label>
+                                <label class="mb-2">¿Cuentan con un equipo de desarrollo de contenido audiovisual para redes?</label>
                                 <div class="form-check">
-                                    <input class="form-check-input custom-check" type="radio" name="publicidad_no_digital" id="publicidad_no_digital_si" value="Sí" required>
-                                    <label class="form-check-label custom-check" for="publicidad_no_digital_si">
+                                    <input class="form-check-input custom-check" type="radio" name="equipo_desarrollo" id="equipo_desarrollo_si" value="Sí">
+                                    <label class="form-check-label custom-check" for="equipo_desarrollo_si">
                                         Sí
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input custom-check" type="radio" name="publicidad_no_digital" id="publicidad_no_digital_no" value="No" checked required>
-                                    <label class="form-check-label custom-check" for="publicidad_no_digital_no">
+                                    <input class="form-check-input custom-check" type="radio" name="equipo_desarrollo" id="equipo_desarrollo_no" value="No" checked>
+                                    <label class="form-check-label custom-check" for="equipo_desarrollo_no">
                                         No
                                     </label>
                                 </div>
-                                <p class="formulario__input-error">Esta pregunta es obligatoria</p>
                             </div>
 
-                            <div class="mb-2 formulario__grupo" id="grupo__publicidad_tradicionales">
-                                <label class="mb-2">En caso de haber indicado "sí" en la pregunta anterior, favor de indicar cuáles medios tradicionales utilizas:</label>
-                                <div class="form-check">
-                                    <input class="form-check-input custom-check" type="checkbox" name="publicidad_tradicionales[]" id="publicidad_radio" value="Radio">
-                                    <label class="form-check-label custom-check" for="publicidad_radio">
-                                        Radio
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input custom-check" type="checkbox" name="publicidad_tradicionales[]" id="publicidad_televisión" value="Televisión">
-                                    <label class="form-check-label custom-check" for="publicidad_televisión">
-                                        Televisión
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input custom-check" type="checkbox" name="publicidad_tradicionales[]" id="publicidad_otros_tradicionales" value="Otros" onchange="checkPublicidadTradicionales()">
-                                    <label class="form-check-label custom-check" for="publicidad_otros_tradicionales">
-                                        Otros:
-                                    </label>
-                                </div>
-                                <input class="mt-2 required formulario__input" type="text" id="publicidad_otros_tradicionales_texto" name="publicidad_otros_tradicionales_texto" onkeyup="validarCampoOtrosDatosPublicidadTradicionales()">
-                                <p class="formulario__input-error">Esta pregunta es obligatoria</p>
-                            </div>
-                            
                             <div class="div-actions">
                                 <button id="previous_button_7" type="button" class="btn custom-button mr-4 mt-2" onclick="previous_7()">
                                     <span>Anterior</span>
@@ -473,37 +338,33 @@
 
                         <form id="form_9" hidden>
                             <div class="mb-2">
-                                <label class="mb-2">¿Cuentan con un equipo de desarrollo de contenido audiovisual para redes?</label>
+                                <label class="mb-2">¿Cuentas con base de datos de usuarios actualmente?</label>
                                 <div class="form-check">
-                                    <input class="form-check-input custom-check" type="radio" name="equipo_desarrollo" id="equipo_desarrollo_si" value="Sí">
-                                    <label class="form-check-label custom-check" for="equipo_desarrollo_si">
+                                    <input class="form-check-input custom-check" type="radio" name="base_datos" id="base_datos_si" value="Sí" onchange="checkBaseDatosUsuarios()">
+                                    <label class="form-check-label custom-check" for="base_datos_si">
                                         Sí
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input custom-check" type="radio" name="equipo_desarrollo" id="equipo_desarrollo_no" value="No">
-                                    <label class="form-check-label custom-check" for="equipo_desarrollo_no">
+                                    <input class="form-check-input custom-check" type="radio" name="base_datos" id="base_datos_no" value="No" checked onchange="checkBaseDatosUsuarios()">
+                                    <label class="form-check-label custom-check" for="base_datos_no">
                                         No
                                     </label>
                                 </div>
                             </div>
 
-                            <div class="mb-2">
-                                <label class="mb-2">¿Cuentan con un equipo de administración de pauta en línea?</label>
-                                <div class="form-check">
-                                    <input class="form-check-input custom-check" type="radio" name="equipo_administracion" id="equipo_administracion_si" value="Sí">
-                                    <label class="form-check-label custom-check" for="equipo_administracion_si">
-                                        Sí
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input custom-check" type="radio" name="equipo_administracion" id="equipo_administracion_no" value="No">
-                                    <label class="form-check-label custom-check" for="equipo_administracion_no">
-                                        No
-                                    </label>
-                                </div>
+                            <div class="mb-2 formulario__grupo" id="grupo__plataforma_base_datos_usuarios" hidden>
+                                <label class="formulario__label mb-2" for="plataforma_base_datos_usuarios">¿Qué plataforma utilizas? <span class="required_field">*</span></label>
+                                <textarea class="required formulario__input" id="plataforma_base_datos_usuarios" name="plataforma_base_datos_usuarios" rows="4" cols="50"></textarea>
+                                <p class="formulario__input-error">Esta pregunta es obligatoria</p>
                             </div>
-                            
+
+                            <div class="mb-2 formulario__grupo" id="grupo__usuarios_base_datos" hidden>
+                                <label class="formulario__label mb-2" for="usuarios_base_datos">¿Cuantos usuarios tienes actualmente? <span class="required_field">*</span></label>
+                                <input type="number" min="0" id="usuarios_base_datos" name="usuarios_base_datos" onkeyup="validarNegativos(this)">
+                                <p class="formulario__input-error">Esta pregunta es obligatoria</p>
+                            </div>
+
                             <div class="div-actions">
                                 <button id="previous_button_8" type="button" class="btn custom-button mr-4 mt-2" onclick="previous_8()">
                                     <span>Anterior</span>
@@ -515,9 +376,26 @@
                         </form>
 
                         <form id="form_10" hidden>
-                            <div class="mb-2 formulario__grupo" id="grupo__objetivo_ventas">
-                                <label class="formulario__label mb-2" for="objetivo_ventas">¿Cuál es el objetivo en ventas que te gustaría alcanzar y cuál es el monto máximo que has alcanzado en ventas? <span class="required_field">*</span></label>
-                                <textarea class="required formulario__input" id="objetivo_ventas" name="objetivo_ventas" rows="4" cols="50"></textarea>
+                            <div class="mb-2 formulario__grupo" id="grupo__herramientas_email">
+                                <label class="formulario__label mb-2">¿Han trabajado con herramientas de E-mail marketing? <span class="required_field">*</span></label>
+                                <div class="form-check">
+                                    <input class="form-check-input custom-check" type="radio" name="herramientas_email" id="herramientas_email_si" value="Sí" required onchange="checkPlataformaEmail()">
+                                    <label class="form-check-label custom-check" for="herramientas_email_si">
+                                        Sí
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input custom-check" type="radio" name="herramientas_email" id="herramientas_email_no" value="No" checked required onchange="checkPlataformaEmail()">
+                                    <label class="form-check-label custom-check" for="herramientas_email_no">
+                                        No
+                                    </label>
+                                </div>
+                                <p class="formulario__input-error">Esta pregunta es obligatoria</p>
+                            </div>
+
+                            <div class="mb-2 formulario__grupo" id="grupo__plataforma_email_utilizada" hidden>
+                                <label class="mb-2" for="plataforma_email_utilizada">¿Qué plataforma utilizas?</label>
+                                <input type="text" id="plataforma_email_utilizada" name="plataforma_email_utilizada">
                                 <p class="formulario__input-error">Esta pregunta es obligatoria</p>
                             </div>
 
@@ -532,25 +410,18 @@
                         </form>
 
                         <form id="form_11" hidden>
-                            <div class="mb-2">
-                                <label class="mb-2">¿Cuentas con base de datos de usuarios actualmente?</label>
-                                <div class="form-check">
-                                    <input class="form-check-input custom-check" type="radio" name="base_datos" id="base_datos_si" value="Sí">
-                                    <label class="form-check-label custom-check" for="base_datos_si">
-                                        Sí
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input custom-check" type="radio" name="base_datos" id="base_datos_no" value="No">
-                                    <label class="form-check-label custom-check" for="base_datos_no">
-                                        No
-                                    </label>
-                                </div>
+                            <div class="mb-2 formulario__grupo" id="grupo__mes_venta_alta">
+                                <label class="formulario__label mb-2" for="mes_venta_alta">¿Més del año con mayor número de ventas? <span class="required_field">*</span></label>
+                                <!-- <textarea class="required formulario__input" id="mes_venta_alta" name="mes_venta_alta" rows="4" cols="50"></textarea> -->
+                                <input class="required formulario__input" type="text" id="mes_venta_alta" name="mes_venta_alta">
+                                <p class="formulario__input-error">Esta pregunta es obligatoria</p>
                             </div>
 
-                            <div class="mb-2">
-                                <label class="mb-2" for="usuarios_base_datos">¿Cuántos usuarios tienen en sus bases de datos?</label>
-                                <input type="number" min="0" id="usuarios_base_datos" name="usuarios_base_datos" onkeyup="validarNegativos(this)">
+                            <div class="mb-2 formulario__grupo" id="grupo__mes_venta_baja">
+                                <label class="formulario__label mb-2" for="mes_venta_baja">¿Més del año con menor número de ventas? <span class="required_field">*</span></label>
+                                <!-- <textarea class="required formulario__input" id="mes_venta_baja" name="mes_venta_baja" rows="4" cols="50"></textarea> -->
+                                <input class="required formulario__input" type="text" id="mes_venta_baja" name="mes_venta_baja">
+                                <p class="formulario__input-error">Esta pregunta es obligatoria</p>
                             </div>
 
                             <div class="div-actions">
@@ -564,51 +435,23 @@
                         </form>
 
                         <form id="form_12" hidden>
-                            <div class="mb-2 formulario__grupo" id="grupo__datos_usuarios">
-                                <label class="mb-2">¿Qué datos tienes de tus usuarios almacenados actualmente?</label>
-                                <div class="form-check">
-                                    <input class="form-check-input custom-check" type="checkbox" name="datos_usuarios[]" id="datos_usuarios_nombre_usuario" value="Nombre Usuario">
-                                    <label class="form-check-label custom-check" for="datos_usuarios_nombre_usuario">
-                                        Nombre Usuario
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input custom-check" type="checkbox" name="datos_usuarios[]" id="datos_usuarios_correo" value="Correo">
-                                    <label class="form-check-label custom-check" for="datos_usuarios_correo">
-                                        Correo
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input custom-check" type="checkbox" name="datos_usuarios[]" id="datos_usuarios_telefono" value="Teléfono">
-                                    <label class="form-check-label custom-check" for="datos_usuarios_telefono">
-                                        Teléfono
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input custom-check" type="checkbox" name="datos_usuarios[]" id="datos_usuarios_monto_compra" value="Monto de Compra">
-                                    <label class="form-check-label custom-check" for="datos_usuarios_monto_compra">
-                                        Monto de Compra
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input custom-check" type="checkbox" name="datos_usuarios[]" id="datos_usuarios_articulo_comprado" value="Artículo comprado">
-                                    <label class="form-check-label custom-check" for="datos_usuarios_articulo_comprado">
-                                        Artículo comprado
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input custom-check" type="checkbox" name="datos_usuarios[]" id="datos_usuarios_numero_compras" value="Número de Compras">
-                                    <label class="form-check-label custom-check" for="datos_usuarios_numero_compras">
-                                        Número de Compras
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input custom-check" type="checkbox" name="datos_usuarios[]" id="datos_usuarios_otros_datos" value="Otros" onchange="checkDatosUsuarios()">
-                                    <label class="form-check-label custom-check" for="datos_usuarios_otros_datos">
-                                        Otros:
-                                    </label>
-                                </div>
-                                <input class="mt-2 required formulario__input" type="text" id="otros_datos_usuarios_texto" name="otros_datos_usuarios_texto" onkeyup="validarCampoOtrosDatosUsuarios()">
+                            <label class="formulario__label mb-2" for="ventas_hace_tres_meses">¿Cuánto vendiste en los pasados 3 meses?<span class="required_field">*</span></label>
+
+                            <div class="mb-2 formulario__grupo" id="grupo__ventas_hace_tres_meses">
+                                <label class="formulario__label mb-2" for="ventas_hace_tres_meses">Hace tres meses: <span class="required_field">*</span></label>
+                                <input class="required formulario__input" type="number" min="0" id="ventas_hace_tres_meses" name="ventas_hace_tres_meses">
+                                <p class="formulario__input-error">Esta pregunta es obligatoria</p>
+                            </div>
+
+                            <div class="mb-2 formulario__grupo" id="grupo__ventas_hace_dos_meses">
+                                <label class="formulario__label mb-2" for="ventas_hace_dos_meses">Hace dos meses: <span class="required_field">*</span></label>
+                                <input class="required formulario__input" type="number" min="0" id="ventas_hace_dos_meses" name="ventas_hace_dos_meses">
+                                <p class="formulario__input-error">Esta pregunta es obligatoria</p>
+                            </div>
+
+                            <div class="mb-2 formulario__grupo" id="grupo__ventas_mes_pasado">
+                                <label class="formulario__label mb-2" for="ventas_mes_pasado">Hace un mes: <span class="required_field">*</span></label>
+                                <input class="required formulario__input" type="number" min="0" id="ventas_mes_pasado" name="ventas_mes_pasado">
                                 <p class="formulario__input-error">Esta pregunta es obligatoria</p>
                             </div>
 
@@ -623,162 +466,24 @@
                         </form>
 
                         <form id="form_13" hidden>
-                            <div class="mb-2 formulario__grupo" id="grupo__herramientas_email">
-                                <label class="formulario__label mb-2">¿Han trabajado con herramientas de E-mail marketing? <span class="required_field">*</span></label>
-                                <div class="form-check">
-                                    <input class="form-check-input custom-check" type="radio" name="herramientas_email" id="herramientas_email_si" value="Sí" required>
-                                    <label class="form-check-label custom-check" for="herramientas_email_si">
-                                        Sí
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input custom-check" type="radio" name="herramientas_email" id="herramientas_email_no" value="No" checked required>
-                                    <label class="form-check-label custom-check" for="herramientas_email_no">
-                                        No
-                                    </label>
-                                </div>
+                            <div class="mb-2 formulario__grupo" id="grupo__objetivo_ventas">
+                                <label class="formulario__label mb-2" for="objetivo_ventas">¿Cuál es tu objetivo de venta mensual? <span class="required_field">*</span></label>
+                                <textarea class="required formulario__input" id="objetivo_ventas" name="objetivo_ventas" rows="4" cols="50"></textarea>
                                 <p class="formulario__input-error">Esta pregunta es obligatoria</p>
-                            </div>
-
-                            <div class="mb-2">
-                                <label class="mb-2" for="herramienta_email_utilizada">¿Cuál herramienta de E-mail marketing has utilizado?</label>
-                                <input type="text" id="herramienta_email_utilizada" name="herramienta_email_utilizada">
                             </div>
 
                             <div class="div-actions">
                                 <button id="previous_button_12" type="button" class="btn custom-button mr-4 mt-2" onclick="previous_12()">
                                     <span>Anterior</span>
                                 </button>
-                                <button id="next_button_13" type="button" class="btn custom-button ml-4 mt-2" onclick="next_13()">
-                                    <span>Siguiente</span>
-                                </button>
-                            </div>
-                        </form>
-
-                        <form id="form_14" hidden>
-                            <div class="mb-2 formulario__grupo" id="grupo__flujos_correo">
-                                <label class="formulario__label mb-2">¿Han trabajado con flujos de correo electrónico de carritos abandonados? <span class="required_field">*</span></label>
-                                <div class="form-check">
-                                    <input class="form-check-input custom-check" type="radio" name="flujos_correo" id="flujos_correo_si" value="Sí" required>
-                                    <label class="form-check-label custom-check" for="flujos_correo_si">
-                                        Sí
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input custom-check" type="radio" name="flujos_correo" id="flujos_correo_no" value="No" checked required>
-                                    <label class="form-check-label custom-check" for="flujos_correo_no">
-                                        No
-                                    </label>
-                                </div>
-                                <p class="formulario__input-error">Esta pregunta es obligatoria</p>
-                            </div>
-
-                            <div class="mb-2">
-                                <label class="mb-2" for="plataformas_carritos">¿Qué plataformas han utilizado o utilizan para correos de carritos abandonados?</label>
-                                <input type="text" id="plataformas_carritos" name="plataformas_carritos">
-                            </div>
-
-                            <div class="div-actions">
-                                <button id="previous_button_13" type="button" class="btn custom-button mr-4 mt-2" onclick="previous_13()">
-                                    <span>Anterior</span>
-                                </button>
-                                <button id="next_button_14" type="button" class="btn custom-button ml-4 mt-2" onclick="next_14()">
-                                    <span>Siguiente</span>
-                                </button>
-                            </div>
-                        </form>
-
-                        <form id="form_15" hidden>
-                            <div class="mb-2 formulario__grupo" id="grupo__meses_ventas_altas">
-                                <label class="formulario__label mb-2" for="meses_ventas_altas">¿Cuáles meses del año son los que cuentan con ventas más altas de manera histórica? <span class="required_field">*</span></label>
-                                <textarea class="required formulario__input" id="meses_ventas_altas" name="meses_ventas_altas" rows="4" cols="50"></textarea>
-                                <p class="formulario__input-error">Esta pregunta es obligatoria</p>
-                            </div>
-
-                            <div class="mb-2 formulario__grupo" id="grupo__meses_ventas_bajas">
-                                <label class="formulario__label mb-2" for="meses_ventas_bajas">¿Cuáles meses del año son los que cuentan con ventas más bajas de manera histórica? <span class="required_field">*</span></label>
-                                <textarea class="required formulario__input" id="meses_ventas_bajas" name="meses_ventas_bajas" rows="4" cols="50"></textarea>
-                                <p class="formulario__input-error">Esta pregunta es obligatoria</p>
-                            </div>
-
-                            <div class="div-actions">
-                                <button id="previous_button_14" type="button" class="btn custom-button mr-4 mt-2" onclick="previous_14()">
-                                    <span>Anterior</span>
-                                </button>
-                                <button id="next_button_15" type="button" class="btn custom-button ml-4 mt-2" onclick="next_15()">
-                                    <span>Siguiente</span>
-                                </button>
-                            </div>
-                        </form>
-
-                        <form id="form_16" hidden>
-                            <div class="mb-2 formulario__grupo" id="grupo__atencion_cliente">
-                                <label class="formulario__label mb-2">¿Tienes atención a cliente de manera activa? <span class="required_field">*</span></label>
-                                <div class="form-check">
-                                    <input class="form-check-input custom-check" type="radio" name="atencion_cliente" id="atencion_cliente_si" value="Sí" required onchange="checkAtencionCliente()">
-                                    <label class="form-check-label custom-check" for="atencion_cliente_si">
-                                        Sí
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input custom-check" type="radio" name="atencion_cliente" id="atencion_cliente_no" value="No" checked required onchange="checkAtencionCliente()">
-                                    <label class="form-check-label custom-check" for="atencion_cliente_no">
-                                        No
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input custom-check" type="radio" name="atencion_cliente" id="atencion_cliente_otros" value="Otros" required onchange="checkAtencionCliente()">
-                                    <label class="form-check-label custom-check" for="atencion_cliente_otros">
-                                        Otros:
-                                    </label>
-                                </div>
-                                <input class="mt-3 formulario__input" type="text" id="atencion_cliente_otros_texto" name="atencion_cliente_otros_texto" hidden onkeyup="validarCampoOtroAtencionCliente()">
-                                <p class="formulario__input-error">Esta pregunta es obligatoria</p>
-                            </div>
-
-                            <div class="mb-2 formulario__grupo" id="grupo__atencion_cliente_digitales">
-                                <label class="formulario__label mb-2">¿En cuáles medios digitales cuentas con atención a cliente? <span class="required_field">*</span></label>
-                                <div class="form-check">
-                                    <input class="form-check-input custom-check" type="checkbox" name="atencion_cliente_digitales[]" id="atencion_clientes_facebook" value="Facebook">
-                                    <label class="form-check-label custom-check" for="atencion_clientes_facebook">
-                                        Facebook
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input custom-check" type="checkbox" name="atencion_cliente_digitales[]" id="atencion_clientes_instagram" value="Instagram">
-                                    <label class="form-check-label custom-check" for="atencion_clientes_instagram">
-                                        Instagram
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input custom-check" type="checkbox" name="atencion_cliente_digitales[]" id="atencion_clientes_whatsapp" value="WhatsApp">
-                                    <label class="form-check-label custom-check" for="atencion_clientes_whatsapp">
-                                        WhatsApp
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input custom-check" type="checkbox" name="atencion_cliente_digitales[]" id="atencion_clientes_otros" value="Otros" onchange="checkAtencionClientesDigitales()">
-                                    <label class="form-check-label custom-check" for="atencion_clientes_otros">
-                                        Otros:
-                                    </label>
-                                </div>
-                                <input class="mt-2 required formulario__input" type="text" id="atencion_clientes_otros_texto" name="atencion_clientes_otros_texto" onkeyup="validarCampoOtrosDatosAtencionClientesDigitales()">
-                                <p class="formulario__input-error">Esta pregunta es obligatoria</p>
-                                <p class="formulario__input-error_2" hidden id="select_atencion_cliente_digitales_required">Debe seleccionar al menos una opción</p>
-                            </div>
-
-                            <div class="div-actions">
-                                <button id="previous_button_15" type="button" class="btn custom-button mr-4 mt-2" onclick="previous_15()">
-                                    <span>Anterior</span>
-                                </button>
-                                <button id="save_button" type="button" class="btn custom-button ml-4 mt-2" onclick="next_16()">
+                                <button id="save_button" type="button" class="btn custom-button ml-4 mt-2" onclick="next_13()">
                                     <span>Enviar</span>
                                 </button>
                             </div>
                         </form>
 
                         <div class="last-form" id="div-last-form" hidden>
-                            <form id="form_17" hidden>
+                            <form id="form_14" hidden>
                                 <div class="mb-2 last_message">
                                     <p>¡Gracias!<br>¡Nuestro equipo te contactará en breve!</p>
                                 </div>
@@ -786,7 +491,7 @@
                         </div>
 
                         <div class="custom_div_count_questions" id="div_count_questions">
-                            <p><span id="span_number_questions_form_2">0</span>/29</p>
+                            <p><span id="span_number_questions_form_2">1</span>/13</p>
                         </div>
                     </div>
                 </div>
