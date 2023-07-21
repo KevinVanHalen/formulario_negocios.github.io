@@ -417,6 +417,40 @@ function checkPlataformaEmail() {
 }
 // FIN VALIDAR CHECKBOX PLATAFORMA DE EMAIL
 
+function checkNingunaRedSocial() {
+    if (document.getElementById('ninguna').checked) {
+        document.getElementById('facebook').setAttribute('disabled', '')
+        document.getElementById('instagram').setAttribute('disabled', '')
+        document.getElementById('twitter').setAttribute('disabled', '')
+        document.getElementById('tiktok').setAttribute('disabled', '')
+        document.getElementById('pinterest').setAttribute('disabled', '')
+        document.getElementById('youtube').setAttribute('disabled', '')
+        document.getElementById('reddit').setAttribute('disabled', '')
+        document.getElementById('otras_redes_sociales').setAttribute('disabled', '')
+        document.getElementById('otras_redes_sociales_texto').setAttribute('disabled', '')
+        
+        document.getElementById('facebook').checked = false
+        document.getElementById('instagram').checked = false
+        document.getElementById('twitter').checked = false
+        document.getElementById('tiktok').checked = false
+        document.getElementById('pinterest').checked = false
+        document.getElementById('youtube').checked = false
+        document.getElementById('reddit').checked = false
+        document.getElementById('otras_redes_sociales').checked = false
+        document.getElementById('otras_redes_sociales_texto').value = ''
+    } else {
+        document.getElementById('facebook').removeAttribute('disabled', '')
+        document.getElementById('instagram').removeAttribute('disabled', '')
+        document.getElementById('twitter').removeAttribute('disabled', '')
+        document.getElementById('tiktok').removeAttribute('disabled', '')
+        document.getElementById('pinterest').removeAttribute('disabled', '')
+        document.getElementById('youtube').removeAttribute('disabled', '')
+        document.getElementById('reddit').removeAttribute('disabled', '')
+        document.getElementById('otras_redes_sociales').removeAttribute('disabled', '')
+        document.getElementById('otras_redes_sociales_texto').removeAttribute('disabled', '')
+    }
+}
+
 /**
  * ====================================================================================================
  * ================== Funciones para los botones avanzar, retroceder y enviar =========================
