@@ -1,57 +1,57 @@
 // URL to send data to google sheet
 const scriptURL = 'https://script.google.com/macros/s/AKfycbw0JC2n99K07kN-znWdY-ANK2cxA9Y50506YJ1tUazJRI1RzvZjwDTYcqa8jITCNEeq/exec'
 
-const inputs = document.querySelectorAll('#formulario-contacto input.required')
-const textareas = document.querySelectorAll('#formulario-contacto textarea.required')
-const selects = document.querySelectorAll('#formulario-contacto select.required')
+const inputs = document.querySelectorAll('#contact-form input.required')
+const textareas = document.querySelectorAll('#contact-form textarea.required')
+const selects = document.querySelectorAll('#contact-form select.required')
 
 const campos = {
-    nombre_tienda: false,
+    store_name: false,
     email: false,
-    modelo_negocio: true,
-    industria: false,
-    redes_sociales: false,
-    mes_venta_alta: false,
-    mes_venta_baja: false,
-    ventas_hace_tres_meses: false,
-    ventas_hace_dos_meses: false,
-    ventas_mes_pasado: false,
-    objetivo_ventas: false,
-    aplicaciones_integraciones_anterior: false,
-    medios_publicidad_pautada: false,
-    presupuesto_mensual_publicidad_pautada: false,
-    plataforma_base_datos_usuarios: false,
-    usuarios_base_datos: false,
-    plataforma_email_utilizada: false,
+    business_model: true,
+    industry: false,
+    social_networks: false,
+    highest_sales_month: false,
+    lowest_sales_month: false,
+    three_months_ago_sales: false,
+    two_months_ago_sales: false,
+    last_month_sales: false,
+    sales_target: false,
+    previous_applications_integrations: false,
+    advertising_media: false,
+    monthly_advertising_budget: false,
+    user_database_platform: false,
+    user_database: false,
+    email_tools_platform: false,
 }
 
-const campos_json = {
-    nombre_tienda: '',
+const json_fields = {
+    store_name: '',
     email: '',
-    modelo_negocio: '',
-    otros_modelos_texto: '',
-    industria: '',
-    otros_industrias_texto: '',
-    plataforma_ecommerce: '',
-    otros_plataforma_ecommerce_texto: '',
-    aplicaciones_integraciones_anterior: '',
-    redes_sociales: [],
-    otras_redes_sociales_texto: '',
-    publicidad_pautada: '',
-    medios_publicidad_pautada: '',
-    presupuesto_mensual_publicidad_pautada: '',
-    equipo_desarrollo: '',
-    base_datos: '',
-    plataforma_base_datos_usuarios: '',
-    usuarios_base_datos: '',
-    herramientas_email: '',
-    plataforma_email_utilizada: '',
-    mes_venta_alta: '',
-    mes_venta_baja: '',
-    ventas_hace_tres_meses: '',
-    ventas_hace_dos_meses: '',
-    ventas_mes_pasado: '',
-    objetivo_ventas: '',
+    business_model: '',
+    other_models_text: '',
+    industry: '',
+    other_industries_text: '',
+    ecommerce_platform: '',
+    another_ecommerce_platform_text: '',
+    previous_applications_integrations: '',
+    social_networks: [],
+    other_social_networks_text: '',
+    scheduled_advertising: '',
+    advertising_media: '',
+    monthly_advertising_budget: '',
+    development_team: '',
+    database_user: '',
+    user_database_platform: '',
+    user_database: '',
+    email_tools: '',
+    email_tools_platform: '',
+    highest_sales_month: '',
+    lowest_sales_month: '',
+    three_months_ago_sales: '',
+    two_months_ago_sales: '',
+    last_month_sales: '',
+    sales_target: '',
 }
 
 /**
@@ -60,89 +60,89 @@ const campos_json = {
  * ====================================================================================================
  */
 
-const validarFormularioInputsTextareas = (e) => {
+const validateFormInputsTextareasSelects = (e) => {
     switch (e.target.name) {
         case "email":
-            validarCampo(e.target, 'email')
+            validateField(e.target, 'email')
             break
-        case "nombre_tienda":
-            validarCampo(e.target, 'nombre_tienda')
-            break
-
-        case "industria":
-            validarCampo(e.target, 'industria')
+        case "store_name":
+            validateField(e.target, 'store_name')
             break
 
-        case "ventas_hace_tres_meses":
-            validarCampo(e.target, 'ventas_hace_tres_meses')
-            break
-        case "ventas_hace_dos_meses":
-            validarCampo(e.target, 'ventas_hace_dos_meses')
-            break
-        case "ventas_mes_pasado":
-            validarCampo(e.target, 'ventas_mes_pasado')
+        case "industry":
+            validateField(e.target, 'industry')
             break
 
-        case "objetivo_ventas":
-            validarCampo(e.target, 'objetivo_ventas')
+        case "three_months_ago_sales":
+            validateField(e.target, 'three_months_ago_sales')
+            break
+        case "two_months_ago_sales":
+            validateField(e.target, 'two_months_ago_sales')
+            break
+        case "last_month_sales":
+            validateField(e.target, 'last_month_sales')
             break
 
-        case "mes_venta_alta":
-            validarCampo(e.target, 'mes_venta_alta')
-            break
-        case "mes_venta_baja":
-            validarCampo(e.target, 'mes_venta_baja')
+        case "sales_target":
+            validateField(e.target, 'sales_target')
             break
 
-        case "aplicaciones_integraciones_anterior":
-            validarCampo(e.target, 'aplicaciones_integraciones_anterior')
+        case "highest_sales_month":
+            validateField(e.target, 'highest_sales_month')
             break
-        case "medios_publicidad_pautada":
-            validarCampo(e.target, 'medios_publicidad_pautada')
+        case "lowest_sales_month":
+            validateField(e.target, 'lowest_sales_month')
             break
-        case "presupuesto_mensual_publicidad_pautada":
-            validarCampo(e.target, 'presupuesto_mensual_publicidad_pautada')
+
+        case "previous_applications_integrations":
+            validateField(e.target, 'previous_applications_integrations')
             break
-        case "plataforma_base_datos_usuarios":
-            validarCampo(e.target, 'plataforma_base_datos_usuarios')
+        case "advertising_media":
+            validateField(e.target, 'advertising_media')
             break
-        case "usuarios_base_datos":
-            validarCampo(e.target, 'usuarios_base_datos')
+        case "monthly_advertising_budget":
+            validateField(e.target, 'monthly_advertising_budget')
             break
-        case "plataforma_email_utilizada":
-            validarCampo(e.target, 'plataforma_email_utilizada')
+        case "user_database_platform":
+            validateField(e.target, 'user_database_platform')
+            break
+        case "user_database":
+            validateField(e.target, 'user_database')
+            break
+        case "email_tools_platform":
+            validateField(e.target, 'email_tools_platform')
             break
     }
 }
 
-const validarCampo = (input, campo) => {
+const validateField = (input, campo) => {
     if (input.value == '') {
-        document.querySelector(`#grupo__${campo} .formulario__input-error`).classList.add('formulario__input-error-activo')
-        document.getElementById(`grupo__${campo}`).classList.add('formulario__grupo-incorrecto')
+        document.querySelector(`#group__${campo} .form__input-error`).classList.add('form__input-error-active')
+        document.getElementById(`group__${campo}`).classList.add('form__group-wrong')
         campos[campo] = false
     } else {
-        document.querySelector(`#grupo__${campo} .formulario__input-error`).classList.remove('formulario__input-error-activo')
-        document.getElementById(`grupo__${campo}`).classList.remove('formulario__grupo-incorrecto')
+        document.querySelector(`#group__${campo} .form__input-error`).classList.remove('form__input-error-active')
+        document.getElementById(`group__${campo}`).classList.remove('form__group-wrong')
         campos[campo] = true
     }
 }
 
 inputs.forEach((input) => {
-    input.addEventListener('keyup', validarFormularioInputsTextareas)
-    input.addEventListener('blur', validarFormularioInputsTextareas)
+    input.addEventListener('keyup', validateFormInputsTextareasSelects)
+    input.addEventListener('blur', validateFormInputsTextareasSelects)
 })
 
 textareas.forEach((textarea) => {
-    textarea.addEventListener('keyup', validarFormularioInputsTextareas)
-    textarea.addEventListener('blur', validarFormularioInputsTextareas)
+    textarea.addEventListener('keyup', validateFormInputsTextareasSelects)
+    textarea.addEventListener('blur', validateFormInputsTextareasSelects)
 })
 
 selects.forEach((select) => {
-    select.addEventListener('blur', validarFormularioInputsTextareas)
-    select.addEventListener('change', validarFormularioInputsTextareas)
+    select.addEventListener('blur', validateFormInputsTextareasSelects)
+    select.addEventListener('change', validateFormInputsTextareasSelects)
 })
 
-const validarNegativos = (e) => {
+const validateNegatives = (e) => {
     if (e.value < 0) {
         e.value = 0
     }
@@ -152,113 +152,113 @@ const validarNegativos = (e) => {
 
 // Campos a validar
 const email = document.getElementById('email')
-const nombre_tienda = document.getElementById('nombre_tienda')
-const industria = document.getElementById('industria')
-const ventas_hace_tres_meses = document.getElementById('ventas_hace_tres_meses')
-const ventas_hace_dos_meses = document.getElementById('ventas_hace_dos_meses')
-const ventas_mes_pasado = document.getElementById('ventas_mes_pasado')
-const objetivo_ventas = document.getElementById('objetivo_ventas')
-const mes_venta_alta = document.getElementById('mes_venta_alta')
-const mes_venta_baja = document.getElementById('mes_venta_baja')
-const aplicaciones_integraciones_anterior = document.getElementById('aplicaciones_integraciones_anterior')
-const medios_publicidad_pautada = document.getElementById('medios_publicidad_pautada')
-const presupuesto_mensual_publicidad_pautada = document.getElementById('presupuesto_mensual_publicidad_pautada')
-const plataforma_base_datos_usuarios = document.getElementById('plataforma_base_datos_usuarios')
-const usuarios_base_datos = document.getElementById('usuarios_base_datos')
-const plataforma_email_utilizada = document.getElementById('plataforma_email_utilizada')
+const store_name = document.getElementById('store_name')
+const industry = document.getElementById('industry')
+const three_months_ago_sales = document.getElementById('three_months_ago_sales')
+const two_months_ago_sales = document.getElementById('two_months_ago_sales')
+const last_month_sales = document.getElementById('last_month_sales')
+const sales_target = document.getElementById('sales_target')
+const highest_sales_month = document.getElementById('highest_sales_month')
+const lowest_sales_month = document.getElementById('lowest_sales_month')
+const previous_applications_integrations = document.getElementById('previous_applications_integrations')
+const advertising_media = document.getElementById('advertising_media')
+const monthly_advertising_budget = document.getElementById('monthly_advertising_budget')
+const user_database_platform = document.getElementById('user_database_platform')
+const user_database = document.getElementById('user_database')
+const email_tools_platform = document.getElementById('email_tools_platform')
 
 // Validar input
-const validarInput = (e) => {
+const validateInput = (e) => {
     switch (e.target.name) {
         case "email":
-            validarCampo(e.target, 'email')
+            validateField(e.target, 'email')
             break
-        case "nombre_tienda":
-            validarCampo(e.target, 'nombre_tienda')
-            break
-
-        case "industria":
-            validarCampo(e.target, 'industria')
+        case "store_name":
+            validateField(e.target, 'store_name')
             break
 
-        case "ventas_hace_tres_meses":
-            validarCampo(e.target, 'ventas_hace_tres_meses')
-            validarNegativos(e.target)
-            break
-        case "ventas_hace_dos_meses":
-            validarCampo(e.target, 'ventas_hace_dos_meses')
-            validarNegativos(e.target)
-            break
-        case "ventas_mes_pasado":
-            validarCampo(e.target, 'ventas_mes_pasado')
-            validarNegativos(e.target)
+        case "industry":
+            validateField(e.target, 'industry')
             break
 
-        case "objetivo_ventas":
-            validarCampo(e.target, 'objetivo_ventas')
+        case "three_months_ago_sales":
+            validateField(e.target, 'three_months_ago_sales')
+            validateNegatives(e.target)
+            break
+        case "two_months_ago_sales":
+            validateField(e.target, 'two_months_ago_sales')
+            validateNegatives(e.target)
+            break
+        case "last_month_sales":
+            validateField(e.target, 'last_month_sales')
+            validateNegatives(e.target)
             break
 
-        case "mes_venta_alta":
-            validarCampo(e.target, 'mes_venta_alta')
-            break
-        case "mes_venta_baja":
-            validarCampo(e.target, 'mes_venta_baja')
+        case "sales_target":
+            validateField(e.target, 'sales_target')
             break
 
-        case "aplicaciones_integraciones_anterior":
-            validarCampo(e.target, 'aplicaciones_integraciones_anterior')
+        case "highest_sales_month":
+            validateField(e.target, 'highest_sales_month')
             break
-        case "medios_publicidad_pautada":
-            validarCampo(e.target, 'medios_publicidad_pautada')
+        case "lowest_sales_month":
+            validateField(e.target, 'lowest_sales_month')
             break
-        case "presupuesto_mensual_publicidad_pautada":
-            validarCampo(e.target, 'presupuesto_mensual_publicidad_pautada')
+
+        case "previous_applications_integrations":
+            validateField(e.target, 'previous_applications_integrations')
             break
-        case "plataforma_base_datos_usuarios":
-            validarCampo(e.target, 'plataforma_base_datos_usuarios')
+        case "advertising_media":
+            validateField(e.target, 'advertising_media')
             break
-        case "usuarios_base_datos":
-            validarCampo(e.target, 'usuarios_base_datos')
+        case "monthly_advertising_budget":
+            validateField(e.target, 'monthly_advertising_budget')
             break
-        case "plataforma_email_utilizada":
-            validarCampo(e.target, 'plataforma_email_utilizada')
+        case "user_database_platform":
+            validateField(e.target, 'user_database_platform')
+            break
+        case "user_database":
+            validateField(e.target, 'user_database')
+            break
+        case "email_tools_platform":
+            validateField(e.target, 'email_tools_platform')
             break
     }
 }
 
 // Eventos a escuchar para validar
-email.addEventListener('keyup', validarInput)
-email.addEventListener('blur', validarInput)
-nombre_tienda.addEventListener('keyup', validarInput)
-nombre_tienda.addEventListener('blur', validarInput)
-industria.addEventListener('keyup', validarInput)
-industria.addEventListener('blur', validarInput)
-aplicaciones_integraciones_anterior.addEventListener('keyup', validarInput)
-aplicaciones_integraciones_anterior.addEventListener('blur', validarInput)
-medios_publicidad_pautada.addEventListener('keyup', validarInput)
-medios_publicidad_pautada.addEventListener('blur', validarInput)
-presupuesto_mensual_publicidad_pautada.addEventListener('keyup', validarInput)
-presupuesto_mensual_publicidad_pautada.addEventListener('blur', validarInput)
-plataforma_base_datos_usuarios.addEventListener('keyup', validarInput)
-plataforma_base_datos_usuarios.addEventListener('blur', validarInput)
-usuarios_base_datos.addEventListener('keyup', validarInput)
-usuarios_base_datos.addEventListener('blur', validarInput)
-plataforma_email_utilizada.addEventListener('keyup', validarInput)
-plataforma_email_utilizada.addEventListener('blur', validarInput)
-mes_venta_alta.addEventListener('keyup', validarInput)
-mes_venta_alta.addEventListener('blur', validarInput)
-mes_venta_baja.addEventListener('keyup', validarInput)
-mes_venta_baja.addEventListener('blur', validarInput)
-ventas_hace_tres_meses.addEventListener('keyup', validarInput)
-ventas_hace_tres_meses.addEventListener('blur', validarInput)
-ventas_hace_dos_meses.addEventListener('keyup', validarInput)
-ventas_hace_dos_meses.addEventListener('blur', validarInput)
-ventas_mes_pasado.addEventListener('keyup', validarInput)
-ventas_mes_pasado.addEventListener('blur', validarInput)
-objetivo_ventas.addEventListener('keyup', validarInput)
-objetivo_ventas.addEventListener('blur', validarInput)
+email.addEventListener('keyup', validateInput)
+email.addEventListener('blur', validateInput)
+store_name.addEventListener('keyup', validateInput)
+store_name.addEventListener('blur', validateInput)
+industry.addEventListener('keyup', validateInput)
+industry.addEventListener('blur', validateInput)
+previous_applications_integrations.addEventListener('keyup', validateInput)
+previous_applications_integrations.addEventListener('blur', validateInput)
+advertising_media.addEventListener('keyup', validateInput)
+advertising_media.addEventListener('blur', validateInput)
+monthly_advertising_budget.addEventListener('keyup', validateInput)
+monthly_advertising_budget.addEventListener('blur', validateInput)
+user_database_platform.addEventListener('keyup', validateInput)
+user_database_platform.addEventListener('blur', validateInput)
+user_database.addEventListener('keyup', validateInput)
+user_database.addEventListener('blur', validateInput)
+email_tools_platform.addEventListener('keyup', validateInput)
+email_tools_platform.addEventListener('blur', validateInput)
+highest_sales_month.addEventListener('keyup', validateInput)
+highest_sales_month.addEventListener('blur', validateInput)
+lowest_sales_month.addEventListener('keyup', validateInput)
+lowest_sales_month.addEventListener('blur', validateInput)
+three_months_ago_sales.addEventListener('keyup', validateInput)
+three_months_ago_sales.addEventListener('blur', validateInput)
+two_months_ago_sales.addEventListener('keyup', validateInput)
+two_months_ago_sales.addEventListener('blur', validateInput)
+last_month_sales.addEventListener('keyup', validateInput)
+last_month_sales.addEventListener('blur', validateInput)
+sales_target.addEventListener('keyup', validateInput)
+sales_target.addEventListener('blur', validateInput)
 
-function validarEmail() {
+function validateEmail() {
     let email = document.getElementById('email')
     let text_email_invalid = document.getElementById('text_email_invalid')
     let validEmail =  /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
@@ -272,152 +272,152 @@ function validarEmail() {
     }
 }
 
-// INICIO VALIDAR SELECT INDUSTRIA
-function checkIndustria() {
-    if (document.getElementById('industria').value == '') {
-        document.querySelector(`#grupo__industria .formulario__input-error`).classList.add('formulario__input-error-activo')
-        document.getElementById(`grupo__industria`).classList.add('formulario__grupo-incorrecto')
-        campos[industria] = false
+// INICIO VALIDAR SELECT industry
+function checkIndustry() {
+    if (document.getElementById('industry').value == '') {
+        document.querySelector(`#group__industry .form__input-error`).classList.add('form__input-error-active')
+        document.getElementById(`group__industry`).classList.add('form__group-wrong')
+        campos[industry] = false
     } else {
-        document.querySelector(`#grupo__industria .formulario__input-error`).classList.remove('formulario__input-error-activo')
-        document.getElementById(`grupo__industria`).classList.remove('formulario__grupo-incorrecto')
-        campos[industria] = true
+        document.querySelector(`#group__industry .form__input-error`).classList.remove('form__input-error-active')
+        document.getElementById(`group__industry`).classList.remove('form__group-wrong')
+        campos[industry] = true
     }
 
-    if (document.getElementById('industria').value == 'Otros') {
-        document.getElementById('otros_industrias_texto').removeAttribute('hidden')
+    if (document.getElementById('industry').value == 'Otros') {
+        document.getElementById('other_industries_text').removeAttribute('hidden')
 
-        document.querySelector(`#grupo__industria .formulario__input-error`).classList.add('formulario__input-error-activo')
-        document.getElementById(`grupo__industria`).classList.add('formulario__grupo-incorrecto')
+        document.querySelector(`#group__industry .form__input-error`).classList.add('form__input-error-active')
+        document.getElementById(`group__industry`).classList.add('form__group-wrong')
     } else {
-        document.getElementById('otros_industrias_texto').setAttribute("hidden", true)
+        document.getElementById('other_industries_text').setAttribute("hidden", true)
 
-        document.querySelector(`#grupo__industria .formulario__input-error`).classList.remove('formulario__input-error-activo')
-        document.getElementById(`grupo__industria`).classList.remove('formulario__grupo-incorrecto')
-    }
-}
-
-function validarCampoIndustria() {
-    if (document.getElementById('otros_industrias_texto').value == '') {
-        document.querySelector(`#grupo__industria .formulario__input-error`).classList.add('formulario__input-error-activo')
-        document.getElementById(`grupo__industria`).classList.add('formulario__grupo-incorrecto')
-    } else {
-        document.querySelector(`#grupo__industria .formulario__input-error`).classList.remove('formulario__input-error-activo')
-        document.getElementById(`grupo__industria`).classList.remove('formulario__grupo-incorrecto')
+        document.querySelector(`#group__industry .form__input-error`).classList.remove('form__input-error-active')
+        document.getElementById(`group__industry`).classList.remove('form__group-wrong')
     }
 }
-// FIN VALIDAR SELECT INDUSTRIA
+
+function validateFieldIndustry() {
+    if (document.getElementById('other_industries_text').value == '') {
+        document.querySelector(`#group__industry .form__input-error`).classList.add('form__input-error-active')
+        document.getElementById(`group__industry`).classList.add('form__group-wrong')
+    } else {
+        document.querySelector(`#group__industry .form__input-error`).classList.remove('form__input-error-active')
+        document.getElementById(`group__industry`).classList.remove('form__group-wrong')
+    }
+}
+// FIN VALIDAR SELECT industry
 
 // INICIO VALIDAR CHECKBOX MODELO NEGOCIOS
-function checkModeloNegocios() {
-    if (document.getElementById('otros_modelos').checked == true) {
-        document.getElementById('otros_modelos_texto').removeAttribute('hidden')
+function checkBusinessModel() {
+    if (document.getElementById('other_models').checked == true) {
+        document.getElementById('other_models_text').removeAttribute('hidden')
 
-        document.querySelector(`#grupo__modelo_negocio .formulario__input-error`).classList.add('formulario__input-error-activo')
-        document.getElementById(`grupo__modelo_negocio`).classList.add('formulario__grupo-incorrecto')
+        document.querySelector(`#group__business_model .form__input-error`).classList.add('form__input-error-active')
+        document.getElementById(`group__business_model`).classList.add('form__group-wrong')
     } else {
-        document.getElementById('otros_modelos_texto').setAttribute("hidden", true)
+        document.getElementById('other_models_text').setAttribute("hidden", true)
 
-        document.querySelector(`#grupo__modelo_negocio .formulario__input-error`).classList.remove('formulario__input-error-activo')
-        document.getElementById(`grupo__modelo_negocio`).classList.remove('formulario__grupo-incorrecto')
+        document.querySelector(`#group__business_model .form__input-error`).classList.remove('form__input-error-active')
+        document.getElementById(`group__business_model`).classList.remove('form__group-wrong')
     }
 }
 
-function validarCampoOtroModeloNegocios() {
-    if (document.getElementById('otros_modelos_texto').value == '') {
-        document.querySelector(`#grupo__modelo_negocio .formulario__input-error`).classList.add('formulario__input-error-activo')
-        document.getElementById(`grupo__modelo_negocio`).classList.add('formulario__grupo-incorrecto')
+function validateFiledAnotherBusinessModel() {
+    if (document.getElementById('other_models_text').value == '') {
+        document.querySelector(`#group__business_model .form__input-error`).classList.add('form__input-error-active')
+        document.getElementById(`group__business_model`).classList.add('form__group-wrong')
     } else {
-        document.querySelector(`#grupo__modelo_negocio .formulario__input-error`).classList.remove('formulario__input-error-activo')
-        document.getElementById(`grupo__modelo_negocio`).classList.remove('formulario__grupo-incorrecto')
+        document.querySelector(`#group__business_model .form__input-error`).classList.remove('form__input-error-active')
+        document.getElementById(`group__business_model`).classList.remove('form__group-wrong')
     }
 }
 // FIN VALIDAR CHECKBOX MODELO NEGOCIOS
 
 // INICIO VALIDAR CHECKBOX MODELO NEGOCIOS
-function checkPlataformaEcommerce() {
-    if (document.getElementById('otros_plataforma_ecommerce').checked == true) {
-        document.getElementById('otros_plataforma_ecommerce_texto').removeAttribute('hidden')
+function checkEcommercePlatform() {
+    if (document.getElementById('another_ecommerce_platform').checked == true) {
+        document.getElementById('another_ecommerce_platform_text').removeAttribute('hidden')
 
-        document.querySelector(`#grupo__plataforma_ecommerce .formulario__input-error`).classList.add('formulario__input-error-activo')
-        document.getElementById(`grupo__plataforma_ecommerce`).classList.add('formulario__grupo-incorrecto')
+        document.querySelector(`#group__ecommerce_platform .form__input-error`).classList.add('form__input-error-active')
+        document.getElementById(`group__ecommerce_platform`).classList.add('form__group-wrong')
     } else {
-        document.getElementById('otros_plataforma_ecommerce_texto').setAttribute("hidden", true)
+        document.getElementById('another_ecommerce_platform_text').setAttribute("hidden", true)
 
-        document.querySelector(`#grupo__plataforma_ecommerce .formulario__input-error`).classList.remove('formulario__input-error-activo')
-        document.getElementById(`grupo__plataforma_ecommerce`).classList.remove('formulario__grupo-incorrecto')
+        document.querySelector(`#group__ecommerce_platform .form__input-error`).classList.remove('form__input-error-active')
+        document.getElementById(`group__ecommerce_platform`).classList.remove('form__group-wrong')
     }
 }
 
-function validarCampoOtroPlataformaEcommerce() {
-    if (document.getElementById('otros_plataforma_ecommerce_texto').value == '') {
-        document.querySelector(`#grupo__plataforma_ecommerce .formulario__input-error`).classList.add('formulario__input-error-activo')
-        document.getElementById(`grupo__plataforma_ecommerce`).classList.add('formulario__grupo-incorrecto')
+function validateFieldAnotherEcommercePlatform() {
+    if (document.getElementById('another_ecommerce_platform_text').value == '') {
+        document.querySelector(`#group__ecommerce_platform .form__input-error`).classList.add('form__input-error-active')
+        document.getElementById(`group__ecommerce_platform`).classList.add('form__group-wrong')
     } else {
-        document.querySelector(`#grupo__plataforma_ecommerce .formulario__input-error`).classList.remove('formulario__input-error-activo')
-        document.getElementById(`grupo__plataforma_ecommerce`).classList.remove('formulario__grupo-incorrecto')
+        document.querySelector(`#group__ecommerce_platform .form__input-error`).classList.remove('form__input-error-active')
+        document.getElementById(`group__ecommerce_platform`).classList.remove('form__group-wrong')
     }
 }
 // FIN VALIDAR CHECKBOX MODELO NEGOCIOS
 
 // INICIO VALIDAR CHECK REDES SOCIALES
-function checkRedesSociales() {
-    if (document.getElementById('otras_redes_sociales').checked == true) {
-        document.querySelector(`#grupo__redes_sociales .formulario__input-error`).classList.add('formulario__input-error-activo')
-        document.getElementById(`grupo__redes_sociales`).classList.add('formulario__grupo-incorrecto')
+function checkSocialNetworks() {
+    if (document.getElementById('other_social_networks').checked == true) {
+        document.querySelector(`#group__social_networks .form__input-error`).classList.add('form__input-error-active')
+        document.getElementById(`group__social_networks`).classList.add('form__group-wrong')
     } else {
-        document.querySelector(`#grupo__redes_sociales .formulario__input-error`).classList.remove('formulario__input-error-activo')
-        document.getElementById(`grupo__redes_sociales`).classList.remove('formulario__grupo-incorrecto')
+        document.querySelector(`#group__social_networks .form__input-error`).classList.remove('form__input-error-active')
+        document.getElementById(`group__social_networks`).classList.remove('form__group-wrong')
     }
     document.getElementById('select_redes_required').setAttribute('hidden', 1)
 }
 
-function validarCampoOtrasRedesSociales() {
-    if (document.getElementById('otras_redes_sociales_texto').value == '') {
-        document.querySelector(`#grupo__redes_sociales .formulario__input-error`).classList.add('formulario__input-error-activo')
-        document.getElementById(`grupo__redes_sociales`).classList.add('formulario__grupo-incorrecto')
+function validateFieldOtherSocialNetworks() {
+    if (document.getElementById('other_social_networks_text').value == '') {
+        document.querySelector(`#group__social_networks .form__input-error`).classList.add('form__input-error-active')
+        document.getElementById(`group__social_networks`).classList.add('form__group-wrong')
     } else {
-        document.querySelector(`#grupo__redes_sociales .formulario__input-error`).classList.remove('formulario__input-error-activo')
-        document.getElementById(`grupo__redes_sociales`).classList.remove('formulario__grupo-incorrecto')
+        document.querySelector(`#group__social_networks .form__input-error`).classList.remove('form__input-error-active')
+        document.getElementById(`group__social_networks`).classList.remove('form__group-wrong')
     }
 }
 // FIN VALIDAR CHECK REDES SOCIALES
 
 // INICIO VALIDAR CHECKBOX PUBLICIDAD PAUTADA
-function checkPublicidadPautada() {
-    if (document.getElementById('publicidad_pautada_si').checked == true) {
-        document.getElementById('grupo__medios_publicidad_pautada').removeAttribute('hidden')
-        document.getElementById('grupo__presupuesto_mensual_publicidad_pautada').removeAttribute('hidden')
+function checkScheduledAdvertising() {
+    if (document.getElementById('scheduled_advertising_yes').checked == true) {
+        document.getElementById('group__advertising_media').removeAttribute('hidden')
+        document.getElementById('group__monthly_advertising_budget').removeAttribute('hidden')
     } else {
-        document.getElementById('grupo__medios_publicidad_pautada').setAttribute("hidden", true)
-        document.getElementById('grupo__presupuesto_mensual_publicidad_pautada').setAttribute("hidden", true)
+        document.getElementById('group__advertising_media').setAttribute("hidden", true)
+        document.getElementById('group__monthly_advertising_budget').setAttribute("hidden", true)
     }
 }
 // FIN VALIDAR CHECKBOX PUBLICIDAD PAUTADA
 
 // INICIO VALIDAR CHECKBOX BASE DE DATOS DE USUARIOS
-function checkBaseDatosUsuarios() {
-    if (document.getElementById('base_datos_si').checked == true) {
-        document.getElementById('grupo__plataforma_base_datos_usuarios').removeAttribute('hidden')
-        document.getElementById('grupo__usuarios_base_datos').removeAttribute('hidden')
+function checkUserDatabase() {
+    if (document.getElementById('database_yes').checked == true) {
+        document.getElementById('group__user_database_platform').removeAttribute('hidden')
+        document.getElementById('group__user_database').removeAttribute('hidden')
     } else {
-        document.getElementById('grupo__plataforma_base_datos_usuarios').setAttribute("hidden", true)
-        document.getElementById('grupo__usuarios_base_datos').setAttribute("hidden", true)
+        document.getElementById('group__user_database_platform').setAttribute("hidden", true)
+        document.getElementById('group__user_database').setAttribute("hidden", true)
     }
 }
 // FIN VALIDAR CHECKBOX BASE DE DATOS DE USUARIOS
 
 // INICIO VALIDAR CHECKBOX PLATAFORMA DE EMAIL
-function checkPlataformaEmail() {
-    if (document.getElementById('herramientas_email_si').checked == true) {
-        document.getElementById('grupo__plataforma_email_utilizada').removeAttribute('hidden')
+function checkEmailPlatform() {
+    if (document.getElementById('email_tools_yes').checked == true) {
+        document.getElementById('group__email_tools_platform').removeAttribute('hidden')
     } else {
-        document.getElementById('grupo__plataforma_email_utilizada').setAttribute("hidden", true)
+        document.getElementById('group__email_tools_platform').setAttribute("hidden", true)
     }
 }
 // FIN VALIDAR CHECKBOX PLATAFORMA DE EMAIL
 
-function checkNingunaRedSocial() {
+function checkNoSocialNetwork() {
     if (document.getElementById('ninguna').checked) {
         document.getElementById('facebook').setAttribute('disabled', '')
         document.getElementById('instagram').setAttribute('disabled', '')
@@ -426,8 +426,8 @@ function checkNingunaRedSocial() {
         document.getElementById('pinterest').setAttribute('disabled', '')
         document.getElementById('youtube').setAttribute('disabled', '')
         document.getElementById('reddit').setAttribute('disabled', '')
-        document.getElementById('otras_redes_sociales').setAttribute('disabled', '')
-        document.getElementById('otras_redes_sociales_texto').setAttribute('disabled', '')
+        document.getElementById('other_social_networks').setAttribute('disabled', '')
+        document.getElementById('other_social_networks_text').setAttribute('disabled', '')
         
         document.getElementById('facebook').checked = false
         document.getElementById('instagram').checked = false
@@ -436,8 +436,8 @@ function checkNingunaRedSocial() {
         document.getElementById('pinterest').checked = false
         document.getElementById('youtube').checked = false
         document.getElementById('reddit').checked = false
-        document.getElementById('otras_redes_sociales').checked = false
-        document.getElementById('otras_redes_sociales_texto').value = ''
+        document.getElementById('other_social_networks').checked = false
+        document.getElementById('other_social_networks_text').value = ''
     } else {
         document.getElementById('facebook').removeAttribute('disabled', '')
         document.getElementById('instagram').removeAttribute('disabled', '')
@@ -446,29 +446,29 @@ function checkNingunaRedSocial() {
         document.getElementById('pinterest').removeAttribute('disabled', '')
         document.getElementById('youtube').removeAttribute('disabled', '')
         document.getElementById('reddit').removeAttribute('disabled', '')
-        document.getElementById('otras_redes_sociales').removeAttribute('disabled', '')
-        document.getElementById('otras_redes_sociales_texto').removeAttribute('disabled', '')
+        document.getElementById('other_social_networks').removeAttribute('disabled', '')
+        document.getElementById('other_social_networks_text').removeAttribute('disabled', '')
     }
 }
 
 /**
  * ====================================================================================================
- * ================== Funciones para los botones avanzar, retroceder y enviar =========================
+ * ================== Funciones para los botones band_continue, retroceder y enviar =========================
  * ====================================================================================================
  */
 
 function next_1() {
     let email = document.getElementById('email')
-    let nombre_tienda = document.getElementById('nombre_tienda')
-    let avanzar = true
+    let store_name = document.getElementById('store_name')
+    let band_continue = true
 
     let text_email_invalid = document.getElementById('text_email_invalid')
     let validEmail =  /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
 
     if (email.value == '') {
-        document.querySelector(`#grupo__email .formulario__input-error`).classList.add('formulario__input-error-activo')
-        document.getElementById(`grupo__email`).classList.add('formulario__grupo-incorrecto')
-        avanzar = false
+        document.querySelector(`#group__email .form__input-error`).classList.add('form__input-error-active')
+        document.getElementById(`group__email`).classList.add('form__group-wrong')
+        band_continue = false
     } else {
         if (validEmail.test(email.value)) {
             // alert('Email valido')
@@ -477,25 +477,25 @@ function next_1() {
             // alert('Email invalido')
             // document.getElementById('text_email_invalid').setAttribute('hidden', 1)
             document.getElementById('text_email_invalid').removeAttribute('hidden')
-            avanzar = false
+            band_continue = false
         }
-        document.querySelector(`#grupo__email .formulario__input-error`).classList.remove('formulario__input-error-activo')
-        document.getElementById(`grupo__email`).classList.remove('formulario__grupo-incorrecto')
+        document.querySelector(`#group__email .form__input-error`).classList.remove('form__input-error-active')
+        document.getElementById(`group__email`).classList.remove('form__group-wrong')
     }
 
 
-    if (nombre_tienda.value == '') {
-        document.querySelector(`#grupo__nombre_tienda .formulario__input-error`).classList.add('formulario__input-error-activo')
-        document.getElementById(`grupo__nombre_tienda`).classList.add('formulario__grupo-incorrecto')
-        avanzar = false
+    if (store_name.value == '') {
+        document.querySelector(`#group__store_name .form__input-error`).classList.add('form__input-error-active')
+        document.getElementById(`group__store_name`).classList.add('form__group-wrong')
+        band_continue = false
     } else {
-        document.querySelector(`#grupo__nombre_tienda .formulario__input-error`).classList.remove('formulario__input-error-activo')
-        document.getElementById(`grupo__nombre_tienda`).classList.remove('formulario__grupo-incorrecto')
+        document.querySelector(`#group__store_name .form__input-error`).classList.remove('form__input-error-active')
+        document.getElementById(`group__store_name`).classList.remove('form__group-wrong')
     }
     
-    if (avanzar) {
-        campos_json.email = document.getElementById('email').value
-        campos_json.nombre_tienda = document.getElementById('nombre_tienda').value
+    if (band_continue) {
+        json_fields.email = document.getElementById('email').value
+        json_fields.store_name = document.getElementById('store_name').value
 
         document.getElementById('form_1').setAttribute('hidden', 1)
         document.getElementById('form_2').removeAttribute('hidden')
@@ -505,18 +505,18 @@ function next_1() {
 }
 
 function next_2() {
-    let otros_modelos_check = document.getElementById('otros_modelos')
-    let otros_modelos_texto = document.getElementById('otros_modelos_texto')
-    let avanzar = true
+    let other_models_check = document.getElementById('other_models')
+    let other_models_text = document.getElementById('other_models_text')
+    let band_continue = true
 
-    if (otros_modelos_check.checked && otros_modelos_texto.value == '') {
-        avanzar = false
+    if (other_models_check.checked && other_models_text.value == '') {
+        band_continue = false
     }
 
-    if (avanzar) {
-        let checkboxes_modelo_negocio = document.querySelectorAll('input[name="modelo_negocio"]:checked')
-        campos_json.modelo_negocio = checkboxes_modelo_negocio[0].value
-        campos_json.otros_modelos_texto = document.getElementById('otros_modelos_texto').value
+    if (band_continue) {
+        let checkboxes_business_model = document.querySelectorAll('input[name="business_model"]:checked')
+        json_fields.business_model = checkboxes_business_model[0].value
+        json_fields.other_models_text = document.getElementById('other_models_text').value
 
         document.getElementById('form_2').setAttribute('hidden', 1)
         document.getElementById('form_3').removeAttribute('hidden')
@@ -533,34 +533,34 @@ function previous_1() {
 }
 
 function next_3() {
-    let industria = document.getElementById('industria')
-    let otros_industrias_texto = document.getElementById('otros_industrias_texto')
-    let avanzar = true
+    let industry = document.getElementById('industry')
+    let other_industries_text = document.getElementById('other_industries_text')
+    let band_continue = true
 
-    if (industria.value == '') {
-        document.querySelector(`#grupo__industria .formulario__input-error`).classList.add('formulario__input-error-activo')
-        document.getElementById(`grupo__industria`).classList.add('formulario__grupo-incorrecto')
-        avanzar = false
+    if (industry.value == '') {
+        document.querySelector(`#group__industry .form__input-error`).classList.add('form__input-error-active')
+        document.getElementById(`group__industry`).classList.add('form__group-wrong')
+        band_continue = false
     } else {
-        if (industria.value == 'Otros') {
-            if (otros_industrias_texto.value == '') {
-                document.querySelector(`#grupo__industria .formulario__input-error`).classList.add('formulario__input-error-activo')
-                document.getElementById(`grupo__industria`).classList.add('formulario__grupo-incorrecto')
-                avanzar = false
+        if (industry.value == 'Otros') {
+            if (other_industries_text.value == '') {
+                document.querySelector(`#group__industry .form__input-error`).classList.add('form__input-error-active')
+                document.getElementById(`group__industry`).classList.add('form__group-wrong')
+                band_continue = false
             } else {
-                document.querySelector(`#grupo__industria .formulario__input-error`).classList.remove('formulario__input-error-activo')
-                document.getElementById(`grupo__industria`).classList.remove('formulario__grupo-incorrecto')
+                document.querySelector(`#group__industry .form__input-error`).classList.remove('form__input-error-active')
+                document.getElementById(`group__industry`).classList.remove('form__group-wrong')
             }
         } else {
-            document.querySelector(`#grupo__industria .formulario__input-error`).classList.remove('formulario__input-error-activo')
-            document.getElementById(`grupo__industria`).classList.remove('formulario__grupo-incorrecto')
+            document.querySelector(`#group__industry .form__input-error`).classList.remove('form__input-error-active')
+            document.getElementById(`group__industry`).classList.remove('form__group-wrong')
         }
     }
 
-    if (avanzar) {
-        let select_industria = document.getElementById('industria')
-        campos_json.industria = select_industria.options[select_industria.selectedIndex].text
-        campos_json.otros_industrias_texto = document.getElementById('otros_industrias_texto').value
+    if (band_continue) {
+        let select_industry = document.getElementById('industry')
+        json_fields.industry = select_industry.options[select_industry.selectedIndex].text
+        json_fields.other_industries_text = document.getElementById('other_industries_text').value
 
         document.getElementById('form_3').setAttribute('hidden', 1)
         document.getElementById('form_4').removeAttribute('hidden')
@@ -577,18 +577,18 @@ function previous_2() {
 }
 
 function next_4() {
-    let otros_plataforma_ecommerce_check = document.getElementById('otros_plataforma_ecommerce')
-    let otros_plataforma_ecommerce_texto = document.getElementById('otros_plataforma_ecommerce_texto')
-    let avanzar = true
+    let another_ecommerce_platform_check = document.getElementById('another_ecommerce_platform')
+    let another_ecommerce_platform_text = document.getElementById('another_ecommerce_platform_text')
+    let band_continue = true
 
-    if (otros_plataforma_ecommerce_check.checked && otros_plataforma_ecommerce_texto.value == '') {
-        avanzar = false
+    if (another_ecommerce_platform_check.checked && another_ecommerce_platform_text.value == '') {
+        band_continue = false
     }
 
-    if (avanzar) {
-        let checkboxes_plataforma_ecommerce = document.querySelectorAll('input[name="plataforma_ecommerce"]:checked')
-        campos_json.plataforma_ecommerce = checkboxes_plataforma_ecommerce[0].value
-        campos_json.otros_plataforma_ecommerce_texto = document.getElementById('otros_plataforma_ecommerce_texto').value
+    if (band_continue) {
+        let checkboxes_ecommerce_platform = document.querySelectorAll('input[name="ecommerce_platform"]:checked')
+        json_fields.ecommerce_platform = checkboxes_ecommerce_platform[0].value
+        json_fields.another_ecommerce_platform_text = document.getElementById('another_ecommerce_platform_text').value
 
         document.getElementById('form_4').setAttribute('hidden', 1)
         document.getElementById('form_5').removeAttribute('hidden')
@@ -605,20 +605,20 @@ function previous_3() {
 }
 
 function next_5() {
-    let aplicaciones_integraciones_anterior = document.getElementById('aplicaciones_integraciones_anterior')
-    let avanzar = true
+    let previous_applications_integrations = document.getElementById('previous_applications_integrations')
+    let band_continue = true
 
-    if (aplicaciones_integraciones_anterior.value == '') {
-        document.querySelector(`#grupo__aplicaciones_integraciones_anterior .formulario__input-error`).classList.add('formulario__input-error-activo')
-        document.getElementById(`grupo__aplicaciones_integraciones_anterior`).classList.add('formulario__grupo-incorrecto')
-        avanzar = false
+    if (previous_applications_integrations.value == '') {
+        document.querySelector(`#group__previous_applications_integrations .form__input-error`).classList.add('form__input-error-active')
+        document.getElementById(`group__previous_applications_integrations`).classList.add('form__group-wrong')
+        band_continue = false
     } else {
-        document.querySelector(`#grupo__aplicaciones_integraciones_anterior .formulario__input-error`).classList.remove('formulario__input-error-activo')
-        document.getElementById(`grupo__aplicaciones_integraciones_anterior`).classList.remove('formulario__grupo-incorrecto')
+        document.querySelector(`#group__previous_applications_integrations .form__input-error`).classList.remove('form__input-error-active')
+        document.getElementById(`group__previous_applications_integrations`).classList.remove('form__group-wrong')
     }
 
-    if (avanzar) {
-        campos_json.aplicaciones_integraciones_anterior = document.getElementById('aplicaciones_integraciones_anterior').value
+    if (band_continue) {
+        json_fields.previous_applications_integrations = document.getElementById('previous_applications_integrations').value
 
         document.getElementById('form_5').setAttribute('hidden', 1)
         document.getElementById('form_6').removeAttribute('hidden')
@@ -635,35 +635,35 @@ function previous_4() {
 }
 
 function next_6() {
-    let checkboxes_redes_sociales = document.querySelectorAll('input[name="redes_sociales[]"]:checked')
-    let avanzar = true
-    if (checkboxes_redes_sociales.length > 0) {
-        if (document.getElementById('otras_redes_sociales').checked) {
-            if (document.getElementById('otras_redes_sociales_texto').value != '') {
-                // campos.redes_sociales = true
+    let checkboxes_social_networks = document.querySelectorAll('input[name="social_networks[]"]:checked')
+    let band_continue = true
+    if (checkboxes_social_networks.length > 0) {
+        if (document.getElementById('other_social_networks').checked) {
+            if (document.getElementById('other_social_networks_text').value != '') {
+                // campos.social_networks = true
             } else {
-                // campos.redes_sociales = false
-                avanzar = false
+                // campos.social_networks = false
+                band_continue = false
             }
             document.getElementById('select_redes_required').setAttribute('hidden', 1)
         } else {
-            // campos.redes_sociales = true
+            // campos.social_networks = true
             document.getElementById('select_redes_required').setAttribute('hidden', 1)
         }
     } else {
         document.getElementById('select_redes_required').removeAttribute('hidden')
-        avanzar = false
+        band_continue = false
     }
 
-    if (avanzar) {
-        campos_json.redes_sociales = []
+    if (band_continue) {
+        json_fields.social_networks = []
 
-        let checkboxes_redes_sociales = document.querySelectorAll('input[name="redes_sociales[]"]:checked')
-        checkboxes_redes_sociales.forEach(e => {
-            campos_json.redes_sociales.push(e.value)
+        let checkboxes_social_networks = document.querySelectorAll('input[name="social_networks[]"]:checked')
+        checkboxes_social_networks.forEach(e => {
+            json_fields.social_networks.push(e.value)
         })
 
-        campos_json.otras_redes_sociales_texto = document.getElementById('otras_redes_sociales_texto').value
+        json_fields.other_social_networks_text = document.getElementById('other_social_networks_text').value
 
         document.getElementById('form_6').setAttribute('hidden', 1)
         document.getElementById('form_7').removeAttribute('hidden')
@@ -680,39 +680,39 @@ function previous_5() {
 }
 
 function next_7() {
-    let checkboxes_publicidad_pautada = document.querySelectorAll('input[name="publicidad_pautada"]:checked')
-    campos_json.publicidad_pautada = checkboxes_publicidad_pautada[0].value
+    let checkboxes_scheduled_advertising = document.querySelectorAll('input[name="scheduled_advertising"]:checked')
+    json_fields.scheduled_advertising = checkboxes_scheduled_advertising[0].value
 
-    let medios_publicidad_pautada = document.getElementById('medios_publicidad_pautada')
-    let presupuesto_mensual_publicidad_pautada = document.getElementById('presupuesto_mensual_publicidad_pautada')
-    let avanzar = true
+    let advertising_media = document.getElementById('advertising_media')
+    let monthly_advertising_budget = document.getElementById('monthly_advertising_budget')
+    let band_continue = true
 
-    if (document.getElementById('publicidad_pautada_si').checked == true){
-        if (medios_publicidad_pautada.value == '') {
-            document.querySelector(`#grupo__medios_publicidad_pautada .formulario__input-error`).classList.add('formulario__input-error-activo')
-            document.getElementById(`grupo__medios_publicidad_pautada`).classList.add('formulario__grupo-incorrecto')
-            avanzar = false
+    if (document.getElementById('scheduled_advertising_yes').checked == true){
+        if (advertising_media.value == '') {
+            document.querySelector(`#group__advertising_media .form__input-error`).classList.add('form__input-error-active')
+            document.getElementById(`group__advertising_media`).classList.add('form__group-wrong')
+            band_continue = false
         } else {
-            document.querySelector(`#grupo__medios_publicidad_pautada .formulario__input-error`).classList.remove('formulario__input-error-activo')
-            document.getElementById(`grupo__medios_publicidad_pautada`).classList.remove('formulario__grupo-incorrecto')
+            document.querySelector(`#group__advertising_media .form__input-error`).classList.remove('form__input-error-active')
+            document.getElementById(`group__advertising_media`).classList.remove('form__group-wrong')
         }
     
-        if (presupuesto_mensual_publicidad_pautada.value == '') {
-            document.querySelector(`#grupo__presupuesto_mensual_publicidad_pautada .formulario__input-error`).classList.add('formulario__input-error-activo')
-            document.getElementById(`grupo__presupuesto_mensual_publicidad_pautada`).classList.add('formulario__grupo-incorrecto')
-            avanzar = false
+        if (monthly_advertising_budget.value == '') {
+            document.querySelector(`#group__monthly_advertising_budget .form__input-error`).classList.add('form__input-error-active')
+            document.getElementById(`group__monthly_advertising_budget`).classList.add('form__group-wrong')
+            band_continue = false
         } else {
-            document.querySelector(`#grupo__presupuesto_mensual_publicidad_pautada .formulario__input-error`).classList.remove('formulario__input-error-activo')
-            document.getElementById(`grupo__presupuesto_mensual_publicidad_pautada`).classList.remove('formulario__grupo-incorrecto')
+            document.querySelector(`#group__monthly_advertising_budget .form__input-error`).classList.remove('form__input-error-active')
+            document.getElementById(`group__monthly_advertising_budget`).classList.remove('form__group-wrong')
         }
     } else {
-        document.getElementById('medios_publicidad_pautada').value = ''
-        document.getElementById('presupuesto_mensual_publicidad_pautada').value = ''
+        document.getElementById('advertising_media').value = ''
+        document.getElementById('monthly_advertising_budget').value = ''
     }
 
-    if (avanzar) {
-        campos_json.medios_publicidad_pautada = document.getElementById('medios_publicidad_pautada').value
-        campos_json.presupuesto_mensual_publicidad_pautada = document.getElementById('presupuesto_mensual_publicidad_pautada').value
+    if (band_continue) {
+        json_fields.advertising_media = document.getElementById('advertising_media').value
+        json_fields.monthly_advertising_budget = document.getElementById('monthly_advertising_budget').value
 
         document.getElementById('form_7').setAttribute('hidden', 1)
         document.getElementById('form_8').removeAttribute('hidden')
@@ -729,8 +729,8 @@ function previous_6() {
 }
 
 function next_8() {
-    let checkboxes_equipo_desarrollo = document.querySelectorAll('input[name="equipo_desarrollo"]:checked')
-    campos_json.equipo_desarrollo = checkboxes_equipo_desarrollo[0] ? checkboxes_equipo_desarrollo[0].value : ''
+    let checkboxes_development_team = document.querySelectorAll('input[name="development_team"]:checked')
+    json_fields.development_team = checkboxes_development_team[0] ? checkboxes_development_team[0].value : ''
 
     document.getElementById('form_8').setAttribute('hidden', 1)
     document.getElementById('form_9').removeAttribute('hidden')
@@ -746,39 +746,39 @@ function previous_7() {
 }
 
 function next_9() {
-    let checkboxes_base_datos = document.querySelectorAll('input[name="base_datos"]:checked')
-    campos_json.base_datos = checkboxes_base_datos[0] ? checkboxes_base_datos[0].value : ''
+    let checkboxes_database_user = document.querySelectorAll('input[name="database_user"]:checked')
+    json_fields.database_user = checkboxes_database_user[0] ? checkboxes_database_user[0].value : ''
     
-    let plataforma_base_datos_usuarios = document.getElementById('plataforma_base_datos_usuarios')
-    let usuarios_base_datos = document.getElementById('usuarios_base_datos')
-    let avanzar = true
+    let user_database_platform = document.getElementById('user_database_platform')
+    let user_database = document.getElementById('user_database')
+    let band_continue = true
 
-    if (document.getElementById('base_datos_si').checked == true){
-        if (plataforma_base_datos_usuarios.value == '') {
-            document.querySelector(`#grupo__plataforma_base_datos_usuarios .formulario__input-error`).classList.add('formulario__input-error-activo')
-            document.getElementById(`grupo__plataforma_base_datos_usuarios`).classList.add('formulario__grupo-incorrecto')
-            avanzar = false
+    if (document.getElementById('database_yes').checked == true){
+        if (user_database_platform.value == '') {
+            document.querySelector(`#group__user_database_platform .form__input-error`).classList.add('form__input-error-active')
+            document.getElementById(`group__user_database_platform`).classList.add('form__group-wrong')
+            band_continue = false
         } else {
-            document.querySelector(`#grupo__plataforma_base_datos_usuarios .formulario__input-error`).classList.remove('formulario__input-error-activo')
-            document.getElementById(`grupo__plataforma_base_datos_usuarios`).classList.remove('formulario__grupo-incorrecto')
+            document.querySelector(`#group__user_database_platform .form__input-error`).classList.remove('form__input-error-active')
+            document.getElementById(`group__user_database_platform`).classList.remove('form__group-wrong')
         }
     
-        if (usuarios_base_datos.value == '') {
-            document.querySelector(`#grupo__usuarios_base_datos .formulario__input-error`).classList.add('formulario__input-error-activo')
-            document.getElementById(`grupo__usuarios_base_datos`).classList.add('formulario__grupo-incorrecto')
-            avanzar = false
+        if (user_database.value == '') {
+            document.querySelector(`#group__user_database .form__input-error`).classList.add('form__input-error-active')
+            document.getElementById(`group__user_database`).classList.add('form__group-wrong')
+            band_continue = false
         } else {
-            document.querySelector(`#grupo__usuarios_base_datos .formulario__input-error`).classList.remove('formulario__input-error-activo')
-            document.getElementById(`grupo__usuarios_base_datos`).classList.remove('formulario__grupo-incorrecto')
+            document.querySelector(`#group__user_database .form__input-error`).classList.remove('form__input-error-active')
+            document.getElementById(`group__user_database`).classList.remove('form__group-wrong')
         }
     } else {
-        document.getElementById('plataforma_base_datos_usuarios').value = ''
-        document.getElementById('usuarios_base_datos').value = ''
+        document.getElementById('user_database_platform').value = ''
+        document.getElementById('user_database').value = ''
     }
 
-    if (avanzar) {
-        campos_json.plataforma_base_datos_usuarios = document.getElementById('medios_publicidad_pautada').value
-        campos_json.usuarios_base_datos = document.getElementById('presupuesto_mensual_publicidad_pautada').value
+    if (band_continue) {
+        json_fields.user_database_platform = document.getElementById('advertising_media').value
+        json_fields.user_database = document.getElementById('monthly_advertising_budget').value
 
         document.getElementById('form_9').setAttribute('hidden', 1)
         document.getElementById('form_10').removeAttribute('hidden')
@@ -795,27 +795,27 @@ function previous_8() {
 }
 
 function next_10() {
-    let checkboxes_herramientas_email = document.querySelectorAll('input[name="herramientas_email"]:checked')
-    campos_json.herramientas_email = checkboxes_herramientas_email[0].value
+    let checkboxes_email_tools = document.querySelectorAll('input[name="email_tools"]:checked')
+    json_fields.email_tools = checkboxes_email_tools[0].value
 
-    let plataforma_email_utilizada = document.getElementById('plataforma_email_utilizada')
-    let avanzar = true
+    let email_tools_platform = document.getElementById('email_tools_platform')
+    let band_continue = true
 
-    if (document.getElementById('herramientas_email_si').checked == true){
-        if (plataforma_email_utilizada.value == '') {
-            document.querySelector(`#grupo__plataforma_email_utilizada .formulario__input-error`).classList.add('formulario__input-error-activo')
-            document.getElementById(`grupo__plataforma_email_utilizada`).classList.add('formulario__grupo-incorrecto')
-            avanzar = false
+    if (document.getElementById('email_tools_yes').checked == true){
+        if (email_tools_platform.value == '') {
+            document.querySelector(`#group__email_tools_platform .form__input-error`).classList.add('form__input-error-active')
+            document.getElementById(`group__email_tools_platform`).classList.add('form__group-wrong')
+            band_continue = false
         } else {
-            document.querySelector(`#grupo__plataforma_email_utilizada .formulario__input-error`).classList.remove('formulario__input-error-activo')
-            document.getElementById(`grupo__plataforma_email_utilizada`).classList.remove('formulario__grupo-incorrecto')
+            document.querySelector(`#group__email_tools_platform .form__input-error`).classList.remove('form__input-error-active')
+            document.getElementById(`group__email_tools_platform`).classList.remove('form__group-wrong')
         }
     } else {
-        document.getElementById('plataforma_email_utilizada').value = ''
+        document.getElementById('email_tools_platform').value = ''
     }
 
-    if (avanzar) {
-        campos_json.plataforma_email_utilizada = document.getElementById('plataforma_email_utilizada').value
+    if (band_continue) {
+        json_fields.email_tools_platform = document.getElementById('email_tools_platform').value
 
         document.getElementById('form_10').setAttribute('hidden', 1)
         document.getElementById('form_11').removeAttribute('hidden')
@@ -832,31 +832,31 @@ function previous_9() {
 }
 
 function next_11() {
-    let mes_venta_alta = document.getElementById('mes_venta_alta')
-    let mes_venta_baja = document.getElementById('mes_venta_baja')
-    let avanzar = true
+    let highest_sales_month = document.getElementById('highest_sales_month')
+    let lowest_sales_month = document.getElementById('lowest_sales_month')
+    let band_continue = true
 
-    if (mes_venta_alta.value == '') {
-        document.querySelector(`#grupo__mes_venta_alta .formulario__input-error`).classList.add('formulario__input-error-activo')
-        document.getElementById(`grupo__mes_venta_alta`).classList.add('formulario__grupo-incorrecto')
-        avanzar = false
+    if (highest_sales_month.value == '') {
+        document.querySelector(`#group__highest_sales_month .form__input-error`).classList.add('form__input-error-active')
+        document.getElementById(`group__highest_sales_month`).classList.add('form__group-wrong')
+        band_continue = false
     } else {
-        document.querySelector(`#grupo__mes_venta_alta .formulario__input-error`).classList.remove('formulario__input-error-activo')
-        document.getElementById(`grupo__mes_venta_alta`).classList.remove('formulario__grupo-incorrecto')
+        document.querySelector(`#group__highest_sales_month .form__input-error`).classList.remove('form__input-error-active')
+        document.getElementById(`group__highest_sales_month`).classList.remove('form__group-wrong')
     }
 
-    if (mes_venta_baja.value == '') {
-        document.querySelector(`#grupo__mes_venta_baja .formulario__input-error`).classList.add('formulario__input-error-activo')
-        document.getElementById(`grupo__mes_venta_baja`).classList.add('formulario__grupo-incorrecto')
-        avanzar = false
+    if (lowest_sales_month.value == '') {
+        document.querySelector(`#group__lowest_sales_month .form__input-error`).classList.add('form__input-error-active')
+        document.getElementById(`group__lowest_sales_month`).classList.add('form__group-wrong')
+        band_continue = false
     } else {
-        document.querySelector(`#grupo__mes_venta_baja .formulario__input-error`).classList.remove('formulario__input-error-activo')
-        document.getElementById(`grupo__mes_venta_baja`).classList.remove('formulario__grupo-incorrecto')
+        document.querySelector(`#group__lowest_sales_month .form__input-error`).classList.remove('form__input-error-active')
+        document.getElementById(`group__lowest_sales_month`).classList.remove('form__group-wrong')
     }
 
-    if (avanzar) {
-        campos_json.mes_venta_alta = document.getElementById('mes_venta_alta').value
-        campos_json.mes_venta_baja = document.getElementById('mes_venta_baja').value
+    if (band_continue) {
+        json_fields.highest_sales_month = document.getElementById('highest_sales_month').value
+        json_fields.lowest_sales_month = document.getElementById('lowest_sales_month').value
 
         document.getElementById('form_11').setAttribute('hidden', 1)
         document.getElementById('form_12').removeAttribute('hidden')
@@ -873,42 +873,42 @@ function previous_10() {
 }
 
 function next_12() {
-    let ventas_hace_tres_meses = document.getElementById('ventas_hace_tres_meses')
-    let ventas_hace_dos_meses = document.getElementById('ventas_hace_dos_meses')
-    let ventas_mes_pasado = document.getElementById('ventas_mes_pasado')
-    let avanzar = true
+    let three_months_ago_sales = document.getElementById('three_months_ago_sales')
+    let two_months_ago_sales = document.getElementById('two_months_ago_sales')
+    let last_month_sales = document.getElementById('last_month_sales')
+    let band_continue = true
 
-    if (ventas_hace_tres_meses.value == '') {
-        document.querySelector(`#grupo__ventas_hace_tres_meses .formulario__input-error`).classList.add('formulario__input-error-activo')
-        document.getElementById(`grupo__ventas_hace_tres_meses`).classList.add('formulario__grupo-incorrecto')
-        avanzar = false
+    if (three_months_ago_sales.value == '') {
+        document.querySelector(`#group__three_months_ago_sales .form__input-error`).classList.add('form__input-error-active')
+        document.getElementById(`group__three_months_ago_sales`).classList.add('form__group-wrong')
+        band_continue = false
     } else {
-        document.querySelector(`#grupo__ventas_hace_tres_meses .formulario__input-error`).classList.remove('formulario__input-error-activo')
-        document.getElementById(`grupo__ventas_hace_tres_meses`).classList.remove('formulario__grupo-incorrecto')
+        document.querySelector(`#group__three_months_ago_sales .form__input-error`).classList.remove('form__input-error-active')
+        document.getElementById(`group__three_months_ago_sales`).classList.remove('form__group-wrong')
     }
 
-    if (ventas_hace_dos_meses.value == '') {
-        document.querySelector(`#grupo__ventas_hace_dos_meses .formulario__input-error`).classList.add('formulario__input-error-activo')
-        document.getElementById(`grupo__ventas_hace_dos_meses`).classList.add('formulario__grupo-incorrecto')
-        avanzar = false
+    if (two_months_ago_sales.value == '') {
+        document.querySelector(`#group__two_months_ago_sales .form__input-error`).classList.add('form__input-error-active')
+        document.getElementById(`group__two_months_ago_sales`).classList.add('form__group-wrong')
+        band_continue = false
     } else {
-        document.querySelector(`#grupo__ventas_hace_dos_meses .formulario__input-error`).classList.remove('formulario__input-error-activo')
-        document.getElementById(`grupo__ventas_hace_dos_meses`).classList.remove('formulario__grupo-incorrecto')
+        document.querySelector(`#group__two_months_ago_sales .form__input-error`).classList.remove('form__input-error-active')
+        document.getElementById(`group__two_months_ago_sales`).classList.remove('form__group-wrong')
     }
 
-    if (ventas_mes_pasado.value == '') {
-        document.querySelector(`#grupo__ventas_mes_pasado .formulario__input-error`).classList.add('formulario__input-error-activo')
-        document.getElementById(`grupo__ventas_mes_pasado`).classList.add('formulario__grupo-incorrecto')
-        avanzar = false
+    if (last_month_sales.value == '') {
+        document.querySelector(`#group__last_month_sales .form__input-error`).classList.add('form__input-error-active')
+        document.getElementById(`group__last_month_sales`).classList.add('form__group-wrong')
+        band_continue = false
     } else {
-        document.querySelector(`#grupo__ventas_mes_pasado .formulario__input-error`).classList.remove('formulario__input-error-activo')
-        document.getElementById(`grupo__ventas_mes_pasado`).classList.remove('formulario__grupo-incorrecto')
+        document.querySelector(`#group__last_month_sales .form__input-error`).classList.remove('form__input-error-active')
+        document.getElementById(`group__last_month_sales`).classList.remove('form__group-wrong')
     }
     
-    if (avanzar) {
-        campos_json.ventas_hace_tres_meses = document.getElementById('ventas_hace_tres_meses').value
-        campos_json.ventas_hace_dos_meses = document.getElementById('ventas_hace_dos_meses').value
-        campos_json.ventas_mes_pasado = document.getElementById('ventas_mes_pasado').value
+    if (band_continue) {
+        json_fields.three_months_ago_sales = document.getElementById('three_months_ago_sales').value
+        json_fields.two_months_ago_sales = document.getElementById('two_months_ago_sales').value
+        json_fields.last_month_sales = document.getElementById('last_month_sales').value
 
         document.getElementById('form_12').setAttribute('hidden', 1)
         document.getElementById('form_13').removeAttribute('hidden')
@@ -925,20 +925,20 @@ function previous_11() {
 }
 
 function next_13() {
-    let objetivo_ventas = document.getElementById('objetivo_ventas')
-    let avanzar = true
+    let sales_target = document.getElementById('sales_target')
+    let band_continue = true
 
-    if (objetivo_ventas.value == '') {
-        document.querySelector(`#grupo__objetivo_ventas .formulario__input-error`).classList.add('formulario__input-error-activo')
-        document.getElementById(`grupo__objetivo_ventas`).classList.add('formulario__grupo-incorrecto')
-        avanzar = false
+    if (sales_target.value == '') {
+        document.querySelector(`#group__sales_target .form__input-error`).classList.add('form__input-error-active')
+        document.getElementById(`group__sales_target`).classList.add('form__group-wrong')
+        band_continue = false
     } else {
-        document.querySelector(`#grupo__objetivo_ventas .formulario__input-error`).classList.remove('formulario__input-error-activo')
-        document.getElementById(`grupo__objetivo_ventas`).classList.remove('formulario__grupo-incorrecto')
+        document.querySelector(`#group__sales_target .form__input-error`).classList.remove('form__input-error-active')
+        document.getElementById(`group__sales_target`).classList.remove('form__group-wrong')
     }
 
-    if (avanzar) {
-        campos_json.objetivo_ventas = document.getElementById('objetivo_ventas').value
+    if (band_continue) {
+        json_fields.sales_target = document.getElementById('sales_target').value
 
         const button_loading = document.getElementById('save_button')
         document.getElementById('save_button').setAttribute('disabled', '')
@@ -951,32 +951,32 @@ function next_13() {
          */
         const formData = new FormData()
 
-        formData.append('nombre_tienda', campos_json.nombre_tienda)
-        formData.append('email', campos_json.email)
-        formData.append('modelo_negocio', campos_json.modelo_negocio)
-        formData.append('otros_modelos_texto', campos_json.otros_modelos_texto)
-        formData.append('industria', campos_json.industria)
-        formData.append('otros_industrias_texto', campos_json.otros_industrias_texto)
-        formData.append('plataforma_ecommerce', campos_json.plataforma_ecommerce)
-        formData.append('otros_plataforma_ecommerce_texto', campos_json.otros_plataforma_ecommerce_texto)
-        formData.append('aplicaciones_integraciones_anterior', campos_json.aplicaciones_integraciones_anterior)
-        formData.append('redes_sociales', campos_json.redes_sociales)
-        formData.append('otras_redes_sociales_texto', campos_json.otras_redes_sociales_texto)
-        formData.append('publicidad_pautada', campos_json.publicidad_pautada)
-        formData.append('medios_publicidad_pautada', campos_json.medios_publicidad_pautada)
-        formData.append('presupuesto_mensual_publicidad_pautada', campos_json.presupuesto_mensual_publicidad_pautada)
-        formData.append('equipo_desarrollo', campos_json.equipo_desarrollo)
-        formData.append('base_datos', campos_json.base_datos)
-        formData.append('plataforma_base_datos_usuarios', campos_json.plataforma_base_datos_usuarios)
-        formData.append('usuarios_base_datos', campos_json.usuarios_base_datos)
-        formData.append('herramientas_email', campos_json.herramientas_email)
-        formData.append('plataforma_email_utilizada', campos_json.plataforma_email_utilizada)
-        formData.append('mes_venta_alta', campos_json.mes_venta_alta)
-        formData.append('mes_venta_baja', campos_json.mes_venta_baja)
-        formData.append('ventas_hace_tres_meses', campos_json.ventas_hace_tres_meses)
-        formData.append('ventas_hace_dos_meses', campos_json.ventas_hace_dos_meses)
-        formData.append('ventas_mes_pasado', campos_json.ventas_mes_pasado)
-        formData.append('objetivo_ventas', campos_json.objetivo_ventas)
+        formData.append('store_name', json_fields.store_name)
+        formData.append('email', json_fields.email)
+        formData.append('business_model', json_fields.business_model)
+        formData.append('other_models_text', json_fields.other_models_text)
+        formData.append('industry', json_fields.industry)
+        formData.append('other_industries_text', json_fields.other_industries_text)
+        formData.append('ecommerce_platform', json_fields.ecommerce_platform)
+        formData.append('another_ecommerce_platform_text', json_fields.another_ecommerce_platform_text)
+        formData.append('previous_applications_integrations', json_fields.previous_applications_integrations)
+        formData.append('social_networks', json_fields.social_networks)
+        formData.append('other_social_networks_text', json_fields.other_social_networks_text)
+        formData.append('scheduled_advertising', json_fields.scheduled_advertising)
+        formData.append('advertising_media', json_fields.advertising_media)
+        formData.append('monthly_advertising_budget', json_fields.monthly_advertising_budget)
+        formData.append('development_team', json_fields.development_team)
+        formData.append('database_user', json_fields.database_user)
+        formData.append('user_database_platform', json_fields.user_database_platform)
+        formData.append('user_database', json_fields.user_database)
+        formData.append('email_tools', json_fields.email_tools)
+        formData.append('email_tools_platform', json_fields.email_tools_platform)
+        formData.append('highest_sales_month', json_fields.highest_sales_month)
+        formData.append('lowest_sales_month', json_fields.lowest_sales_month)
+        formData.append('three_months_ago_sales', json_fields.three_months_ago_sales)
+        formData.append('two_months_ago_sales', json_fields.two_months_ago_sales)
+        formData.append('last_month_sales', json_fields.last_month_sales)
+        formData.append('sales_target', json_fields.sales_target)
 
         fetch(scriptURL, {
             method: 'POST', 

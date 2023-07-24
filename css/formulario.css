@@ -146,7 +146,7 @@ input[type="text"], input[type="email"], input[type="number"], input[type="passw
 
 /*
 =======================================================================================================
-======================================== Estilos Principales ==========================================
+============================================ Main Styles ==============================================
 =======================================================================================================
 */
 
@@ -168,19 +168,19 @@ label {
     color: #ffffff;
 }
 
-.formulario__grupo-incorrecto .formulario__label {
+.form__group-wrong .form__label {
     color: #ffffff;
 }
 
-.formulario__grupo-incorrecto .formulario__input {
+.form__group-wrong .form__input {
     border: .1rem solid #ffffff;
 }
 
-.formulario__input_2 {
+.form__input_2 {
     border: .1rem solid #ffffff;
 }
 
-.formulario__input-error {
+.form__input-error {
     font-size: 16px;
     margin-bottom: 0;
     margin-top: 4px;
@@ -189,7 +189,7 @@ label {
     font-weight: bold;
 }
 
-.formulario__input-error_2 {
+.form__input-error_2 {
     font-size: 16px;
     margin-bottom: 0;
     margin-top: 4px;
@@ -198,7 +198,7 @@ label {
     font-weight: bold;
 }
 
-.formulario__input-error-activo {
+.form__input-error-active {
     display: block;
 }
 
@@ -206,7 +206,7 @@ label {
     color: #ffffff;
 }
 
-.formulario__label_aux {
+.form__label_aux {
     color: #bb2929;
 }
 
@@ -282,12 +282,12 @@ label {
     }
 }
 
-.formulario-contacto {
+.contact-form {
     margin-top: 0;
 }
 
 @media (min-width: 768px) {
-    .formulario-contacto {
+    .contact-form {
         /* margin-top: 3.5rem; */
         display: flex;
         height: 100vh;
