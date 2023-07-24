@@ -5,7 +5,7 @@ const inputs = document.querySelectorAll('#contact-form input.required')
 const textareas = document.querySelectorAll('#contact-form textarea.required')
 const selects = document.querySelectorAll('#contact-form select.required')
 
-const campos = {
+const fields = {
     store_name: false,
     email: false,
     business_model: true,
@@ -119,11 +119,11 @@ const validateField = (input, campo) => {
     if (input.value == '') {
         document.querySelector(`#group__${campo} .form__input-error`).classList.add('form__input-error-active')
         document.getElementById(`group__${campo}`).classList.add('form__group-wrong')
-        campos[campo] = false
+        fields[campo] = false
     } else {
         document.querySelector(`#group__${campo} .form__input-error`).classList.remove('form__input-error-active')
         document.getElementById(`group__${campo}`).classList.remove('form__group-wrong')
-        campos[campo] = true
+        fields[campo] = true
     }
 }
 
@@ -215,7 +215,7 @@ const validateInput = (e) => {
     }
 }
 
-// Eventos a escuchar para validar
+// Listen events for validation
 email.addEventListener('keyup', validateInput)
 email.addEventListener('blur', validateInput)
 store_name.addEventListener('keyup', validateInput)
@@ -260,16 +260,16 @@ function validateEmail() {
     }
 }
 
-// INICIO VALIDAR SELECT industry
+// Start validate industry select
 function checkIndustry() {
     if (document.getElementById('industry').value == '') {
         document.querySelector(`#group__industry .form__input-error`).classList.add('form__input-error-active')
         document.getElementById(`group__industry`).classList.add('form__group-wrong')
-        campos[industry] = false
+        fields[industry] = false
     } else {
         document.querySelector(`#group__industry .form__input-error`).classList.remove('form__input-error-active')
         document.getElementById(`group__industry`).classList.remove('form__group-wrong')
-        campos[industry] = true
+        fields[industry] = true
     }
 
     if (document.getElementById('industry').value == 'Otros') {
@@ -294,9 +294,9 @@ function validateFieldIndustry() {
         document.getElementById(`group__industry`).classList.remove('form__group-wrong')
     }
 }
-// FIN VALIDAR SELECT industry
+// End validate industry select
 
-// INICIO VALIDAR CHECKBOX MODELO NEGOCIOS
+// Start validate business model check
 function checkBusinessModel() {
     if (document.getElementById('other_models').checked == true) {
         document.getElementById('other_models_text').removeAttribute('hidden')
@@ -320,9 +320,9 @@ function validateFiledAnotherBusinessModel() {
         document.getElementById(`group__business_model`).classList.remove('form__group-wrong')
     }
 }
-// FIN VALIDAR CHECKBOX MODELO NEGOCIOS
+// End validate business model check
 
-// INICIO VALIDAR CHECKBOX MODELO NEGOCIOS
+// Start validate ecommerce platform check
 function checkEcommercePlatform() {
     if (document.getElementById('another_ecommerce_platform').checked == true) {
         document.getElementById('another_ecommerce_platform_text').removeAttribute('hidden')
@@ -353,9 +353,9 @@ function validateFieldAnotherEcommercePlatform() {
         document.getElementById(`group__ecommerce_platform`).classList.remove('form__group-wrong')
     }
 }
-// FIN VALIDAR CHECKBOX MODELO NEGOCIOS
+// End validate ecommerce platform check
 
-// INICIO VALIDAR CHECK REDES SOCIALES
+// Start validate social networks check
 function checkSocialNetworks() {
     if (document.getElementById('other_social_networks').checked == true) {
         document.querySelector(`#group__social_networks .form__input-error`).classList.add('form__input-error-active')
@@ -376,9 +376,9 @@ function validateFieldOtherSocialNetworks() {
         document.getElementById(`group__social_networks`).classList.remove('form__group-wrong')
     }
 }
-// FIN VALIDAR CHECK REDES SOCIALES
+// End validate social networks check
 
-// INICIO VALIDAR CHECKBOX PUBLICIDAD PAUTADA
+// Start validate scheduled advertising check
 function checkScheduledAdvertising() {
     if (document.getElementById('scheduled_advertising_yes').checked == true) {
         document.getElementById('group__advertising_media').removeAttribute('hidden')
@@ -388,9 +388,9 @@ function checkScheduledAdvertising() {
         document.getElementById('group__monthly_advertising_budget').setAttribute("hidden", true)
     }
 }
-// FIN VALIDAR CHECKBOX PUBLICIDAD PAUTADA
+// End validate scheduled advertising check
 
-// INICIO VALIDAR CHECKBOX BASE DE DATOS DE USUARIOS
+// Start validate user database check
 function checkUserDatabase() {
     if (document.getElementById('database_yes').checked == true) {
         document.getElementById('group__user_database_platform').removeAttribute('hidden')
@@ -400,9 +400,9 @@ function checkUserDatabase() {
         document.getElementById('group__user_database').setAttribute("hidden", true)
     }
 }
-// FIN VALIDAR CHECKBOX BASE DE DATOS DE USUARIOS
+// End validate user database check
 
-// INICIO VALIDAR CHECKBOX PLATAFORMA DE EMAIL
+// Start validate email tools platform check
 function checkEmailPlatform() {
     if (document.getElementById('email_tools_yes').checked == true) {
         document.getElementById('group__email_tools_platform').removeAttribute('hidden')
@@ -410,7 +410,7 @@ function checkEmailPlatform() {
         document.getElementById('group__email_tools_platform').setAttribute("hidden", true)
     }
 }
-// FIN VALIDAR CHECKBOX PLATAFORMA DE EMAIL
+// End validate email tools platform check
 
 function checkNoSocialNetwork() {
     if (document.getElementById('ninguna').checked) {
@@ -465,11 +465,8 @@ function next_1() {
         band_continue = false
     } else {
         if (validEmail.test(email.value)) {
-            // alert('Email valido')
             document.getElementById('text_email_invalid').setAttribute('hidden', 1)
         } else {
-            // alert('Email invalido')
-            // document.getElementById('text_email_invalid').setAttribute('hidden', 1)
             document.getElementById('text_email_invalid').removeAttribute('hidden')
             band_continue = false
         }
@@ -619,14 +616,12 @@ function next_6() {
     if (checkboxes_social_networks.length > 0) {
         if (document.getElementById('other_social_networks').checked) {
             if (document.getElementById('other_social_networks_text').value != '') {
-                // campos.social_networks = true
+                // fields.social_networks = true
             } else {
-                // campos.social_networks = false
                 band_continue = false
             }
             document.getElementById('select_redes_required').setAttribute('hidden', 1)
         } else {
-            // campos.social_networks = true
             document.getElementById('select_redes_required').setAttribute('hidden', 1)
         }
     } else {
