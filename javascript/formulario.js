@@ -249,7 +249,8 @@ sales_target.addEventListener('blur', validateInput)
 
 function validateEmail() {
     let email = document.getElementById('email')
-    let validEmail =  /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
+    // let validEmail =  /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
+    let validEmail =  /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
 
     if (email.value == '') {
         document.getElementById('text_email_invalid').setAttribute('hidden', 1)
@@ -457,7 +458,8 @@ function next_1() {
     let store_name = document.getElementById('store_name')
     let band_continue = true
 
-    let validEmail =  /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
+    // let validEmail =  /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
+    let validEmail =  /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
 
     if (email.value == '') {
         document.querySelector(`#group__email .form__input-error`).classList.add('form__input-error-active')
@@ -951,6 +953,7 @@ function next_13() {
         formData.append('two_months_ago_sales', json_fields.two_months_ago_sales)
         formData.append('last_month_sales', json_fields.last_month_sales)
         formData.append('sales_target', json_fields.sales_target)
+        formData.append('reply_date', new Date().toJSON().slice(0, 10))
 
         fetch(scriptURL, {
             method: 'POST', 
